@@ -112,8 +112,6 @@ let g:coc_global_extensions = [
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <leader>ac  <Plug>(coc-codeaction)
-nmap <leader>qf  <Plug>(coc-fix-current)
 nmap <f2> <Plug>(coc-rename)
 nnoremap <silent> K <cmd>call <SID>show_documentation()<CR>
 
