@@ -63,7 +63,6 @@ let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_auto_insert_bullets = 1
 let g:vim_markdown_no_default_key_mappings = 1
 let g:edge_better_performance = 1
-let g:edge_sign_column_background = 'none'
 let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
 let g:edge_diagnostic_virtual_text = 'colored'
