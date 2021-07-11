@@ -78,6 +78,7 @@ set ff=dos
 filetype plugin indent on
 
 " User Interface Options
+set mouse=n
 set noshowmode
 set ruler
 set tabpagemax=5
