@@ -164,8 +164,8 @@ nnoremap <C-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <C-,> <cmd>lua require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') })<CR>
 nnoremap <leader>ff <cmd>Telescope fd<cr>
 nnoremap <leader>ft <cmd>Telescope treesitter<cr>
-nnoremap <leader>fg <cmd>Telescope git_files<cr>
-nnoremap <leader>gb <cmd>Telescope git_branches<cr>
+nnoremap <leader>fG <cmd>Telescope git_files<cr>
+nnoremap <leader>Gb <cmd>Telescope git_branches<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>cc <cmd>Telescope coc commands<cr>
 nnoremap <leader>ca <cmd>Telescope coc code_actions<cr>
@@ -183,7 +183,7 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " Vim Fugitive Shortcuts
-nnoremap <leader>gs <cmd>Git<cr>
-nnoremap <leader>ga <cmd>Git add .<cr>
-nnoremap <leader>gc <cmd>Git commit<cr>
-nnoremap <leader>gp <cmd>Git push<cr>
+nnoremap <leader>Gs <cmd>Git<cr>
+nnoremap <leader>Ga <cmd>Git add .<cr>
+nnoremap <leader>Gc <cmd>Git commit<cr>
+nnoremap <leader>Gp <cmd>Git push<cr>
