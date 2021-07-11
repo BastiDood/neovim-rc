@@ -176,6 +176,7 @@ nnoremap <leader>wd <cmd>Telescope coc workspace_diagnostics<cr>
 " Treesitter Configuration
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+    indent = { enable = true },
     highlight = { enable = true },
 }
 EOF
