@@ -143,7 +143,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
     vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Telescope Commands
+" Telescope Configuration
 lua <<EOF
 require'telescope'.setup {
     defaults = {
@@ -160,6 +160,8 @@ require'telescope'.setup {
 require'telescope'.load_extension('fzy_native')
 require'telescope'.load_extension('coc')
 EOF
+
+" Telescope-related Keyboard Mappings
 nnoremap <C-e> <cmd>Telescope file_browser<cr>
 nnoremap <C-f> <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <C-,> <cmd>lua require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') })<CR>
