@@ -77,6 +77,7 @@ set scrolloff=5
 filetype plugin indent on
 
 " User Interface Options
+let g:netrw_liststyle = 3
 set mouse=n
 set noshowmode
 set ruler
