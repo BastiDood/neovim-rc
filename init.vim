@@ -74,7 +74,6 @@ set encoding=UTF-8
 set wrap
 set linebreak
 set scrolloff=5
-set ff=dos
 filetype plugin indent on
 
 " User Interface Options
