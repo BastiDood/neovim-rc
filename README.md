@@ -4,6 +4,7 @@ Hello! Welcome to my Neovim configuration. It's not as clean as I would like it 
 * Conform to Neovim's standard [runtime directory structure](https://www.youtube.com/watch?v=pjtfd5otTHg)
 * Fully migrate configurations to [Lua](https://github.com/nanotee/nvim-lua-guide)
 * Fully migrate from [coc.nvim](https://github.com/neoclide/coc.nvim) to [Native LSP](https://github.com/neovim/nvim-lspconfig)
+* Add debugging support with [vimspector](https://github.com/puremourning/vimspector)
 
 # External Dependencies
 The following programs are required to be installed for the configurations to work.
