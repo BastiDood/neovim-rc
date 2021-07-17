@@ -1,6 +1,6 @@
 {
     "coc.preferences.formatOnSaveFiletypes": [ "rust" ],
-    "coc.preferences.semanticTokensHighlights": false,
+    "coc.preferences.semanticTokensHighlights": true,
     "clangd.semanticHighlighting": true,
     "codeLens.enable": false,
     "tsserver.implicitProjectConfig.checkJs": true,
