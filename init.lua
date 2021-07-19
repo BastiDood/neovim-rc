@@ -102,7 +102,7 @@ vim.g.coc_global_extensions = {
 }
 
 -- Coc Documentation
-function _G.show_documentation()
+function show_documentation()
     local filetype = vim.bo.filetype
     if filetype == 'vim' or filetype == 'help' then
         local cword = vim.fn.expand('<cword>')
