@@ -86,6 +86,7 @@ set cursorline
 set signcolumn=yes
 set number relativenumber
 set nu rnu
+set splitbelow splitright
 
 " Miscellaneous Options
 set shortmess+=c
