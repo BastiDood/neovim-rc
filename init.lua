@@ -129,16 +129,18 @@ vim.api.nvim_set_keymap('n', '<f2>', '<Plug>(coc-rename)', silent)
 vim.api.nvim_set_keymap('n', 'K', [[<cmd>lua show_documentation()<cr>]], silent_noremap)
 
 -- CoC Floating Windows
+local down_key = '<C-Down>'
+local up_key = '<C-Up>'
 function scroll_floating_window(down)
     if vim.fn['coc#float#has_scroll']() then
         return vim.fn['coc#float#scroll'](down)
     else
-        local key = down and '<C-Down>' or '<C-Up>'
+        local key = down and down_key or up_key
         return vim.api.nvim_replace_termcodes(key)
     end
 end
-vim.api.nvim_set_keymap('n', '<C-Down>', 'v:lua.scroll_floating_window(1)', silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('n', '<C-Up>', 'v:lua.scroll_floating_window(0)', silent_noremap_expr_nowait)
+vim.api.nvim_set_keymap('n', down_key, 'v:lua.scroll_floating_window(1)', silent_noremap_expr_nowait)
+vim.api.nvim_set_keymap('n', up_key, 'v:lua.scroll_floating_window(0)', silent_noremap_expr_nowait)
 
 -- Telescope Configuration
 require'telescope'.setup {
