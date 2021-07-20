@@ -150,6 +150,7 @@ require'telescope'.setup {
             i = { [ '<esc>' ] = require'telescope.actions'.close },
         },
     },
+    pickers = { file_browser = { disable_devicons = true } },
     extensions = {
         fzy_native = {
             override_generic_sorter = false,
