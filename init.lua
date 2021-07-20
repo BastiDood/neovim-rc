@@ -129,12 +129,16 @@ vim.api.nvim_set_keymap('n', '<f2>', '<Plug>(coc-rename)', silent)
 vim.api.nvim_set_keymap('n', 'K', [[<cmd>lua show_documentation()<cr>]], silent_noremap)
 
 -- CoC Floating Windows
-vim.api.nvim_set_keymap('n', '<C-Down>', [[coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"]], silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('n', '<C-Up>', [[coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"]], silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('i', '<C-Down>', [[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"]], silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('i', '<C-Up>', [[coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"]], silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('v', '<C-Down>', [[coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"]], silent_noremap_expr_nowait)
-vim.api.nvim_set_keymap('v', '<C-Up>', [[coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"]], silent_noremap_expr_nowait)
+function scroll_floating_window(down)
+    if vim.fn['coc#float#has_scroll']() then
+        return vim.fn['coc#float#scroll'](down)
+    else
+        local key = down and '<C-Down>' or '<C-Up>'
+        return vim.api.nvim_replace_termcodes(key)
+    end
+end
+vim.api.nvim_set_keymap('n', '<C-Down>', 'v:lua.scroll_floating_window(1)', silent_noremap_expr_nowait)
+vim.api.nvim_set_keymap('n', '<C-Up>', 'v:lua.scroll_floating_window(0)', silent_noremap_expr_nowait)
 
 -- Telescope Configuration
 require'telescope'.setup {
@@ -155,18 +159,18 @@ require'telescope'.load_extension('fzy_native')
 require'telescope'.load_extension('coc')
 
 -- Telescope Keybindings
-vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>Telescope file_browser<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<C-p>', [[<cmd>Telescope file_browser<cr>]], silent_noremap)
 vim.api.nvim_set_keymap('n', '<C-f>', [[<cmd>Telescope current_buffer_fuzzy_find<cr>]], silent_noremap )
 vim.api.nvim_set_keymap('n', '<C-,>', [[<cmd>lua require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') })<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'ff', [[<cmd>Telescope fd<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'ft', [[<cmd>Telescope treesitter<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'fG', [[<cmd>Telescope git_files<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'Gb', [[<cmd>Telescope git_branches<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'fb', [[<cmd>Telescope buffers<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'cc', [[<cmd>Telescope coc commands<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'ca', [[<cmd>Telescope coc code_actions<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'ds', [[<cmd>Telescope coc document_symbols<cr>]], silent_noremap)
-vim.api.nvim_set_keymap('n', 'ws', [[<cmd>Telescope coc workspace_symbols<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>ff', [[<cmd>Telescope fd<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>ft', [[<cmd>Telescope treesitter<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>fG', [[<cmd>Telescope git_files<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>Gb', [[<cmd>Telescope git_branches<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>Telescope buffers<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>cc', [[<cmd>Telescope coc commands<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>ca', [[<cmd>Telescope coc code_actions<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>ds', [[<cmd>Telescope coc document_symbols<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<leader>ws', [[<cmd>Telescope coc workspace_symbols<cr>]], silent_noremap)
 
 -- Treesitter Configuration
 require'nvim-treesitter.configs'.setup {
@@ -184,4 +188,5 @@ vim.api.nvim_set_keymap('n', '<leader>Gc', [[<cmd>Git commit<cr>]], silent_norem
 vim.api.nvim_set_keymap('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap)
 
 -- Custom Keybindings
+vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>Vexplore<cr>]], silent_noremap)
 vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>w<cr>]], silent_noremap)
