@@ -34,6 +34,7 @@ vim.o.scrolloff = 5
 vim.o.hlsearch = false
 
 -- User Interface Options
+vim.opt.completeopt:append({ 'menuone', 'preview' })
 vim.o.mouse = 'n'
 vim.o.showmode = false
 vim.o.ruler = true
@@ -150,7 +151,7 @@ require'telescope'.setup {
             i = { [ '<esc>' ] = require'telescope.actions'.close },
         },
     },
-    pickers = { file_browser = { disable_devicons = true } },
+    -- pickers = { file_browser = { disable_devicons = true } },
     extensions = {
         fzy_native = {
             override_generic_sorter = false,
