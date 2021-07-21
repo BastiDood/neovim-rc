@@ -27,6 +27,7 @@ vim.g.lightline = {
 g.coc_global_extensions = {
     'coc-clangd',
     'coc-cmake',
+    'coc-prettier',
     'coc-css',
     'coc-deno',
     'coc-emmet',

@@ -1,5 +1,5 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [ "rust" ],
+    "coc.preferences.formatOnSaveFiletypes": ["rust", "javascript", "typescript"],
     "coc.preferences.semanticTokensHighlights": true,
     "clangd.semanticHighlighting": true,
     "codeLens.enable": false,
