@@ -1,46 +1,48 @@
+local o = vim.o
+
 -- Switch to Development Directory
 vim.cmd('cd /Dev')
 
 -- Indentation
-vim.o.foldmethod = 'expr'
-vim.o.foldexpr = [[nvim_treesitter#foldexpr()]]
-vim.o.autoindent = true
-vim.o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.smarttab = true
+o.foldmethod = 'expr'
+o.foldexpr = [[nvim_treesitter#foldexpr()]]
+o.autoindent = true
+o.expandtab = true
+o.shiftwidth = 4
+o.tabstop = 4
+o.smarttab = true
 
 -- Performance Options
-vim.o.lazyredraw = true
+o.lazyredraw = true
 
 -- Text Rendering Options
-vim.o.termguicolors = true
-vim.o.encoding = 'UTF-8'
-vim.o.wrap = true
-vim.o.linebreak = true
-vim.o.scrolloff = 5
-vim.o.hlsearch = false
+o.termguicolors = true
+o.encoding = 'UTF-8'
+o.wrap = true
+o.linebreak = true
+o.scrolloff = 5
+o.hlsearch = false
 
 -- User Interface Options
 vim.cmd('colorscheme edge')
 vim.opt.completeopt:append({ 'menuone', 'preview' })
-vim.o.mouse = 'n'
-vim.o.showmode = false
-vim.o.ruler = true
-vim.o.tabpagemax = 5
-vim.o.cursorline = true
-vim.o.signcolumn = 'number'
-vim.o.number = true
-vim.o.relativenumber = true
-vim.o.nu = true
-vim.o.rnu = true
-vim.o.splitbelow = true
-vim.o.splitright = true
+o.mouse = 'n'
+o.showmode = false
+o.ruler = true
+o.tabpagemax = 5
+o.cursorline = true
+o.signcolumn = 'number'
+o.number = true
+o.relativenumber = true
+o.nu = true
+o.rnu = true
+o.splitbelow = true
+o.splitright = true
 
 -- Miscellaneous
 vim.opt.shortmess:append({ c = true })
 vim.opt.clipboard:append({ 'unnamedplus' })
-vim.o.hidden = true
-vim.o.history = 500
-vim.o.backup = false
-vim.o.writebackup = false
+o.hidden = true
+o.history = 500
+o.backup = false
+o.writebackup = false
