@@ -7,10 +7,10 @@ function plugins(use)
     use 'sainnhe/edge'
 
     -- Language Support
-    use 'rust-lang/rust.vim'
-    use 'jackguo380/vim-lsp-cxx-highlight'
-    use 'plasticboy/vim-markdown'
-    use 'mattn/emmet-vim'
+    use { 'rust-lang/rust.vim', ft = 'rust' }
+    use { 'jackguo380/vim-lsp-cxx-highlight', ft = { 'c', 'cpp' } }
+    use { 'plasticboy/vim-markdown', ft = 'markdown' }
+    use { 'mattn/emmet-vim', ft = 'html' }
 
     -- Language Server Protocol
     use { 'neoclide/coc.nvim', branch = 'release' }
@@ -20,8 +20,14 @@ function plugins(use)
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
     }
-    use 'nvim-telescope/telescope-fzy-native.nvim'
-    use 'fannheyward/telescope-coc.nvim'
+    use {
+        'nvim-telescope/telescope-fzy-native.nvim',
+        requires = 'nvim-telescope/telescope.nvim',
+    }
+    use {
+        'fannheyward/telescope-coc.nvim',
+        requires = 'nvim-telescope/telescope.nvim',
+    }
 
     -- Treesitter
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
