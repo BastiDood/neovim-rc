@@ -27,6 +27,7 @@ function plugins(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     -- Miscellaneous
+    use { 'preservim/nerdtree', cmd = 'NERDTreeToggle' }
     use 'tpope/vim-fugitive'
 end
 

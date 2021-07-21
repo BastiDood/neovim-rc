@@ -192,5 +192,5 @@ vim.api.nvim_set_keymap('n', '<leader>Gc', [[<cmd>Git commit<cr>]], silent_norem
 vim.api.nvim_set_keymap('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap)
 
 -- Custom Keybindings
-vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>Vexplore<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>NERDTreeToggle<cr>]], silent_noremap)
 vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>w<cr>]], silent_noremap)
