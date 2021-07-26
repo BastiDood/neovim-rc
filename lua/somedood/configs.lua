@@ -30,8 +30,6 @@ g.coc_global_extensions = {
     'coc-prettier',
     'coc-css',
     'coc-deno',
-    'coc-emmet',
-    'coc-html',
     'coc-json',
     'coc-pairs',
     'coc-powershell',

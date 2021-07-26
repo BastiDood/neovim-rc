@@ -10,7 +10,6 @@ function plugins(use)
     use { 'rust-lang/rust.vim', ft = 'rust' }
     use { 'jackguo380/vim-lsp-cxx-highlight', ft = { 'c', 'cpp' } }
     use { 'plasticboy/vim-markdown', ft = 'markdown' }
-    use { 'mattn/emmet-vim', ft = 'html' }
 
     -- Language Server Protocol
     use { 'neoclide/coc.nvim', branch = 'release' }
