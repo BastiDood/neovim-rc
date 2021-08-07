@@ -66,4 +66,4 @@ vim.api.nvim_set_keymap('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap
 vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>NERDTreeToggle<cr>]], silent_noremap)
 
 -- Neovim Keybindings
-vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>w<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
