@@ -1,7 +1,6 @@
 {
     "clangd.semanticHighlighting": true,
     "coc.preferences.formatOnSaveFiletypes": ["rust", "javascript", "typescript"],
-    "coc.preferences.semanticTokensHighlights": true,
     "codeLens.enable": false,
     "javascript.implementationsCodeLens.enable": false,
     "javascript.suggestionActions.enabled": false,
@@ -18,6 +17,7 @@
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
     "prettier.arrowParens": "avoid",
+    "prettier.printWidth": 100,
     "python.linting.pylintEnabled": true,
     "rust-analyzer.highlighting.strings": true,
     "rust-analyzer.inlayHints.typeHints": true,
