@@ -27,6 +27,7 @@ vim.api.nvim_set_keymap('n', 'gy', '<Plug>(coc-type-definition)', silent)
 vim.api.nvim_set_keymap('n', 'gi', '<Plug>(coc-implementation)', silent)
 vim.api.nvim_set_keymap('n', '<f2>', '<Plug>(coc-rename)', silent)
 vim.api.nvim_set_keymap('n', 'K', [[<cmd>lua show_documentation()<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('v', 'K', [[<cmd>lua show_documentation()<cr>]], silent_noremap)
 
 -- CoC Floating Windows
 local down_key = '<C-Down>'
