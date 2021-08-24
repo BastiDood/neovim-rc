@@ -1,3 +1,4 @@
+local noremap = { noremap = true }
 local silent = { silent = true }
 local silent_expr = { silent = true, expr = true }
 local silent_noremap = { noremap = true, silent = true }
@@ -68,3 +69,4 @@ vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>NERDTreeToggle<cr>]], silent_norema
 
 -- Neovim Keybindings
 vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
+vim.api.nvim_set_keymap('n', 'Y', 'y$', noremap)
