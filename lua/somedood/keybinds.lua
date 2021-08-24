@@ -70,3 +70,5 @@ vim.api.nvim_set_keymap('n', '<C-e>', [[<cmd>NERDTreeToggle<cr>]], silent_norema
 -- Neovim Keybindings
 vim.api.nvim_set_keymap('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
 vim.api.nvim_set_keymap('n', 'Y', 'y$', noremap)
+vim.api.nvim_set_keymap('n', '<C-S-k>', [[<cmd>m .-2<cr>==]], noremap)
+vim.api.nvim_set_keymap('n', '<C-S-j>', [[<cmd>m .+1<cr>==]], noremap)
