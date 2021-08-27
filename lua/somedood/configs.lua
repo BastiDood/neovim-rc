@@ -80,9 +80,21 @@ g.vim_markdown_auto_insert_bullets = 1
 g.vim_markdown_no_default_key_mappings = 1
 g.vim_markdown_folding_disabled = 1
 
--- NERDTree Configuration
-g.NERDTreeWinPos = 'right'
-g.NERDTreeMinimalUI = 1
+-- NvimTree Configuration
+g.nvim_tree_side = 'right'
+g.nvim_tree_ignore = { '.vim', '.git', '.github', '.vscode', 'node_modules', 'target', 'build' }
+g.nvim_tree_gitignore = 1
+g.nvim_tree_indent_markers = 1
+g.nvim_tree_hide_dotfiles = 1
+g.nvim_tree_highlight_opened_files = 1
+g.nvim_tree_add_trailing = 1
+g.nvim_tree_group_empty = 1
+g.nvim_tree_show_icons = {
+    git = 0,
+    folders = 1,
+    files = 1,
+    folder_arrows = 1,
+}
 
 -- Netrw Options
 g.netrw_liststyle = 3
