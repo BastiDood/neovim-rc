@@ -59,6 +59,8 @@ telescope.setup {
             i = { [ '<esc>' ] = actions.close },
         },
     },
+    disable_devicons = true,
+    use_less = true,
     pickers = { file_browser = { disable_devicons = true } },
     extensions = {
         fzy_native = {
