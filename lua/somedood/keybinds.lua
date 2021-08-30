@@ -49,6 +49,7 @@ api.nvim_set_keymap('n', up_key, 'v:lua.scroll_floating_window(0)', silent_norem
 -- Telescope Keybindings
 api.nvim_set_keymap('n', '<C-p>', [[<cmd>Telescope file_browser<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<C-f>', [[<cmd>Telescope current_buffer_fuzzy_find<cr>]], silent_noremap )
+api.nvim_set_keymap('n', '<C-S-f>', [[<cmd>Telescope live_grep<cr>]], silent_noremap )
 api.nvim_set_keymap('n', '<C-,>', [[<cmd>lua require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') })<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<leader>ff', [[<cmd>Telescope fd<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<leader>ft', [[<cmd>Telescope treesitter<cr>]], silent_noremap)
