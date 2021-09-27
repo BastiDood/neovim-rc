@@ -18,21 +18,64 @@ function plugins(use)
     use {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+        config = function()
+            require'telescope'.setup {
+                defaults = {
+                    file_sorter = require'telescope.sorters'.get_fzy_sorter,
+                    mappings = {
+                        i = { [ '<esc>' ] = require'telescope.actions'.close },
+                    },
+                },
+                disable_devicons = true,
+                use_less = true,
+                pickers = { file_browser = { disable_devicons = true } },
+                extensions = {
+                    fzy_native = {
+                        override_generic_sorter = false,
+                        override_file_sorter = true,
+                    }
+                },
+            }
+        end,
     }
     use {
         'nvim-telescope/telescope-fzy-native.nvim',
         requires = 'nvim-telescope/telescope.nvim',
+        config = function() require'telescope'.load_extension('fzy_native') end,
     }
     use {
         'fannheyward/telescope-coc.nvim',
         requires = 'nvim-telescope/telescope.nvim',
+        config = function() require'telescope'.load_extension('coc') end,
     }
 
     -- Treesitter
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+        config = function()
+            require'nvim-treesitter.configs'.setup {
+                indent = { enable = true },
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+            }
+        end,
+    }
 
     -- Miscellaneous
-    use { 'kyazdani42/nvim-tree.lua', cmd = 'NvimTreeToggle' }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        cmd = 'NvimTreeToggle',
+        config = function()
+            require'nvim-tree'.setup {
+                update_cwd = true,
+                hijack_cursor = true,
+                view = { side = 'right' },
+            }
+        end,
+    }
     use 'tpope/vim-fugitive'
 end
 

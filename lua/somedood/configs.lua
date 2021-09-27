@@ -9,7 +9,7 @@ g.edge_disable_italic_comment = 1
 g.edge_diagnostic_virtual_text = 'colored'
 
 -- Lightline Configuration
-vim.g.lightline = {
+g.lightline = {
     colorscheme = 'edge',
     active = {
         left = {
@@ -37,42 +37,6 @@ g.coc_global_extensions = {
     'coc-tsserver',
 }
 
--- Treesitter Configuration
-require'nvim-treesitter.configs'.setup {
-    indent = { enable = true },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
-
-
--- Telescope Configuration
-local telescope = require'telescope'
-local sorters = require'telescope.sorters'
-local actions = require'telescope.actions'
-telescope.setup {
-    defaults = {
-        file_sorter = sorters.get_fzy_sorter,
-        mappings = {
-            i = { [ '<esc>' ] = actions.close },
-        },
-    },
-    disable_devicons = true,
-    use_less = true,
-    pickers = { file_browser = { disable_devicons = true } },
-    extensions = {
-        fzy_native = {
-            override_generic_sorter = false,
-            override_file_sorter = true,
-        }
-    },
-}
-
--- Telescope Extensions
-telescope.load_extension('fzy_native')
-telescope.load_extension('coc')
-
 -- Vim Markdown
 g.vim_markdown_frontmatter = 1
 g.vim_markdown_math = 1
@@ -81,7 +45,7 @@ g.vim_markdown_auto_insert_bullets = 1
 g.vim_markdown_no_default_key_mappings = 1
 g.vim_markdown_folding_disabled = 1
 
--- NvimTree Configuration
+-- Nvim-Tree Configuration
 g.nvim_tree_side = 'right'
 g.nvim_tree_ignore = { '.vim', '.git', '.github', '.vscode', 'node_modules', 'target', 'build' }
 g.nvim_tree_gitignore = 1
