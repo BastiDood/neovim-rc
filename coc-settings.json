@@ -1,6 +1,6 @@
 {
     "clangd.semanticHighlighting": true,
-    "coc.preferences.formatOnSaveFiletypes": ["rust", "javascript", "typescript"],
+    "coc.preferences.formatOnSaveFiletypes": ["c", "cpp", "rust", "javascript", "typescript"],
     "codeLens.enable": false,
     "javascript.implementationsCodeLens.enable": false,
     "javascript.suggestionActions.enabled": false,
