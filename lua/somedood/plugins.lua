@@ -8,7 +8,6 @@ function plugins(use)
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
-    use { 'jackguo380/vim-lsp-cxx-highlight', ft = { 'c', 'cpp' } }
     use { 'plasticboy/vim-markdown', ft = 'markdown' }
 
     -- Language Server Protocol
