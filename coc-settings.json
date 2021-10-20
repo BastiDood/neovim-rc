@@ -1,5 +1,4 @@
 {
-    "clangd.semanticHighlighting": true,
     "coc.preferences.formatOnSaveFiletypes": ["c", "cpp", "rust", "javascript", "typescript"],
     "codeLens.enable": false,
     "javascript.implementationsCodeLens.enable": false,
