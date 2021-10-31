@@ -69,9 +69,11 @@ function plugins(use)
         cmd = 'NvimTreeToggle',
         config = function()
             require'nvim-tree'.setup {
+                ignore_ft_on_setup = { '.vim', '.git', '.github', '.vscode', 'node_modules', 'target', 'build' },
                 update_cwd = true,
                 hijack_cursor = true,
                 view = { side = 'right' },
+                filters = { dotfiles = false },
             }
         end,
     }
