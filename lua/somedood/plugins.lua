@@ -73,7 +73,7 @@ function plugins(use)
                 update_cwd = true,
                 hijack_cursor = true,
                 view = { side = 'right' },
-                filters = { dotfiles = false },
+                filters = { dotfiles = true },
             }
         end,
     }
