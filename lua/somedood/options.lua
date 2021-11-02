@@ -41,7 +41,6 @@ o.splitright = true
 
 -- Miscellaneous
 vim.opt.shortmess:append({ c = true })
-vim.opt.clipboard:append({ 'unnamedplus' })
 o.hidden = true
 o.history = 500
 o.backup = false
