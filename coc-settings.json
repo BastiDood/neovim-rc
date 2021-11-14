@@ -18,6 +18,7 @@
     "rust-analyzer.inlayHints.typeHints": true,
     "rust-analyzer.inlayHints.chainingHints": true,
     "rust-analyzer.lens.enable": false,
+    "rust-analyzer.checkOnSave.enable": false,
     "tsserver.implicitProjectConfig.checkJs": true,
     "tsserver.disableAutomaticTypeAcquisition": true,
     "tsserver.formatOnType": false,
