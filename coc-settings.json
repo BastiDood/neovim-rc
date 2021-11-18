@@ -1,6 +1,7 @@
 {
     "coc.preferences.formatOnSaveFiletypes": ["c", "cpp", "rust", "javascript", "typescript"],
     "codeLens.enable": false,
+    "deno.lint": true,
     "javascript.implementationsCodeLens.enable": false,
     "javascript.suggestionActions.enabled": false,
     "javascript.suggest.autoImports": false,
