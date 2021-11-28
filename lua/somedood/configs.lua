@@ -47,7 +47,6 @@ g.vim_markdown_folding_disabled = 1
 
 -- Nvim-Tree Configuration
 g.nvim_tree_side = 'right'
-g.nvim_tree_gitignore = 1
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_add_trailing = 1
