@@ -9,9 +9,11 @@ function plugins(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
         config = function()
             require'lualine'.setup {
-                options = { theme = 'edge' },
                 sections = { lualine_c = { 'filename', 'g:coc_status' } },
-                disabled_filetypes = { 'NvimTree' },
+                options = {
+                    theme = 'edge',
+                    disabled_filetypes = { 'NvimTree' },
+                },
             }
         end,
     }
