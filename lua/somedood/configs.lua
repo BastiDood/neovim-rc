@@ -8,21 +8,6 @@ g.edge_enable_italic = 0
 g.edge_disable_italic_comment = 1
 g.edge_diagnostic_virtual_text = 'colored'
 
--- Lightline Configuration
-g.lightline = {
-    colorscheme = 'edge',
-    active = {
-        left = {
-            { 'mode', 'paste' },
-            { 'branch', 'filename', 'modified', 'cocstatus' },
-        },
-    },
-    component_function = {
-        cocstatus = 'coc#status',
-        branch = 'fugitive#head',
-    },
-}
-
 -- CoC Configuration
 g.coc_global_extensions = {
     'coc-clangd',
@@ -46,7 +31,6 @@ g.vim_markdown_no_default_key_mappings = 1
 g.vim_markdown_folding_disabled = 1
 
 -- Nvim-Tree Configuration
-g.nvim_tree_side = 'right'
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_highlight_opened_files = 1
 g.nvim_tree_add_trailing = 1
