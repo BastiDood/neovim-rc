@@ -3,8 +3,18 @@ function plugins(use)
     use 'wbthomason/packer.nvim'
 
     -- Editor Theming
-    use 'itchyny/lightline.vim'
     use 'sainnhe/edge'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            require'lualine'.setup {
+                options = { theme = 'edge' },
+                sections = { lualine_c = { 'filename', 'g:coc_status' } },
+                disabled_filetypes = { 'NvimTree' },
+            }
+        end,
+    }
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
@@ -25,7 +35,7 @@ function plugins(use)
                         i = { [ '<esc>' ] = require'telescope.actions'.close },
                     },
                 },
-                disable_devicons = true,
+                disable_devicons = false,
                 use_less = true,
                 pickers = { file_browser = { disable_devicons = true } },
                 extensions = {
@@ -72,9 +82,9 @@ function plugins(use)
                 ignore_ft_on_setup = { '.vim', '.git', '.github', '.vscode', 'node_modules', 'target', 'build' },
                 update_cwd = true,
                 hijack_cursor = true,
+                filters = { dotfiles = true },
                 git = { ignore = true },
                 view = { side = 'right' },
-                filters = { dotfiles = true },
             }
         end,
     }
