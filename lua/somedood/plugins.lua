@@ -10,10 +10,8 @@ function plugins(use)
         config = function()
             require'lualine'.setup {
                 sections = { lualine_c = { 'filename', 'g:coc_status' } },
-                options = {
-                    theme = 'edge',
-                    disabled_filetypes = { 'NvimTree' },
-                },
+                extensions = { 'nvim-tree', 'fugitive' },
+                options = { theme = 'edge' },
             }
         end,
     }
