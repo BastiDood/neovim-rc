@@ -1,4 +1,4 @@
 require'somedood.plugins'
 require'somedood.options'
-require'somedood.configs'
+require'somedood.globals'
 require'somedood.keybinds'
