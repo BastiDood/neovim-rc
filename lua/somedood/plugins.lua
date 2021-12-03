@@ -42,7 +42,7 @@ function plugins(use)
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
-        config = require'somedood.configs.indent_blankline',
+        config = require'somedood.configs.indent-blankline',
     }
 
     -- Miscellaneous
