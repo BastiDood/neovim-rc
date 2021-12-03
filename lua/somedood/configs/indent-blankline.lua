@@ -1,6 +1,8 @@
 return function()
     require'indent_blankline'.setup {
         context_patterns = {
+            'namespace',
+            'module',
             'class',
             'method',
             'function',
