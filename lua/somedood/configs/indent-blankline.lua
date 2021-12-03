@@ -14,6 +14,7 @@ return function()
         },
         filetype_exclude = {
             'fugitive',
+            'help',
             'packer',
             'terminal',
             'NvimTree',
