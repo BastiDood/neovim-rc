@@ -22,5 +22,5 @@ return function()
 
     local yellow = vim.fn['edge#get_palette']('default').yellow[1];
     vim.cmd(string.format('highlight IndentBlanklineContextChar gui=nocombine guifg=%s', yellow))
-    vim.cmd(string.format('highlight IndentBlanklineContextStart gui=underline guisp=%s', yellow))
+    vim.cmd(string.format('highlight IndentBlanklineContextStart gui=underline,bold guisp=%s', yellow))
 end
