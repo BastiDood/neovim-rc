@@ -6,6 +6,9 @@ return function()
             'function',
             'if',
             'table',
+            'while',
+            'for',
+            'loop',
         },
         filetype_exclude = {
             'fugitive',
