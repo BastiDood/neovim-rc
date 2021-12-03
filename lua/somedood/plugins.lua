@@ -34,20 +34,24 @@ function plugins(use)
         config = require'somedood.configs.telescope'.coc,
     }
 
-    -- Treesitter
+    -- Syntax Analyzer
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = require'somedood.configs.treesitter',
     }
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = require'somedood.configs.indent_blankline',
+    }
 
     -- Miscellaneous
+    use 'tpope/vim-fugitive'
     use {
         'kyazdani42/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
         config = require'somedood.configs.nvim-tree',
     }
-    use 'tpope/vim-fugitive'
 end
 
 return require'packer'.startup(plugins)
