@@ -42,6 +42,7 @@ function plugins(use)
     }
     use {
         'lukas-reineke/indent-blankline.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter', 'sainnhe/edge' },
         config = require'somedood.configs.indent-blankline',
     }
 
