@@ -44,6 +44,11 @@ function plugins(use)
         'hrsh7th/cmp-path',
         requires = 'hrsh7th/nvim-cmp',
     }
+    use {
+        'windwp/nvim-autopairs',
+        requires = 'hrsh7th/nvim-cmp',
+        config = require'somedood.configs.autopairs',
+    }
 
     -- Language Server
     use {
