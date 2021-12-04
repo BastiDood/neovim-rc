@@ -21,13 +21,6 @@ function plugins(use)
         config = require'somedood.configs.markdown',
     }
 
-    -- Language Server Protocol
-    use {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        config = require'somedood.configs.coc',
-    }
-
     -- Telescope
     local telescope = require'somedood.configs.telescope'
     use {
@@ -39,11 +32,6 @@ function plugins(use)
         'nvim-telescope/telescope-fzy-native.nvim',
         requires = 'nvim-telescope/telescope.nvim',
         config = telescope.fzy,
-    }
-    use {
-        'fannheyward/telescope-coc.nvim',
-        requires = 'nvim-telescope/telescope.nvim',
-        config = telescope.coc,
     }
 
     -- Syntax Analyzer

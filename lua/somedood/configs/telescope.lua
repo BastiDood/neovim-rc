@@ -18,9 +18,6 @@ return {
             },
         }
     end,
-    coc = function()
-        require'telescope'.load_extension('coc')
-    end,
     fzy = function()
         require'telescope'.load_extension('fzy_native')
     end,
