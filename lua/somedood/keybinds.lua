@@ -1,4 +1,4 @@
-local api = vim.api
+local api = vim.api.nvim_set_keymap
 
 local noremap = { noremap = true }
 local silent_noremap = { noremap = true, silent = true }
