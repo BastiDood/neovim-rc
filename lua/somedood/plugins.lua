@@ -9,7 +9,10 @@ function plugins(use)
     }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        requires = {
+            'nvim-lua/lsp-status.nvim',
+            { 'kyazdani42/nvim-web-devicons', opt = true },
+        },
         config = require'somedood.configs.lualine',
     }
 
@@ -52,8 +55,12 @@ function plugins(use)
 
     -- Language Server
     use {
+        'nvim-lua/lsp-status.nvim',
+        config = require'somedood.configs.lsp-status',
+    }
+    use {
         'neovim/nvim-lspconfig',
-        requires = 'hrsh7th/cmp-nvim-lsp',
+        requires = { 'hrsh7th/cmp-nvim-lsp', 'nvim-lua/lsp-status.nvim' },
         config = require'somedood.configs.lsp',
     }
 

@@ -1,4 +1,4 @@
-local function on_lsp_attach(_, bufnr)
+local function on_lsp_attach(client, bufnr)
     local function buf_set_keymap(mode, combo, macro)
         vim.api.nvim_buf_set_keymap(bufnr, mode, combo, macro, { noremap = true, silent = true })
     end
@@ -16,19 +16,30 @@ local function on_lsp_attach(_, bufnr)
     buf_set_keymap('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
     buf_set_keymap('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
     buf_set_keymap('n', '<space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+
+    return require'lsp-status'.on_attach(client, bufnr)
 end
 
 return function()
-    local caps = require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local status = require'lsp-status'
     local lsp = require'lspconfig'
 
+    local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
+
     -- Simple Configurations
-    lsp.clangd.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.tsserver.setup { on_attach = on_lsp_attach, capabilities = caps } 
+
+    -- Advanced Clangd Configuration
+    lsp.clangd.setup {
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+        init_options = { clangdFileStatus = true },
+        handlers = status.extensions.clangd.setup(),
+    } 
 
     -- Advanced CSS Configuration
     local css_config = {
