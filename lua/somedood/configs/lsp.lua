@@ -1,4 +1,4 @@
-local function on_lsp_attach(client, bufnr)
+function on_lsp_attach(client, bufnr)
     local function buf_set_keymap(mode, combo, macro)
         vim.api.nvim_buf_set_keymap(bufnr, mode, combo, macro, { noremap = true, silent = true })
     end
@@ -30,6 +30,15 @@ return function()
     local status = require'lsp-status'
     local lsp = require'lspconfig'
 
+    -- Native LSP Diagnostics
+    vim.diagnostic.config({
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = false,
+        severity_sort = false,
+    })
+
     local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
 
     -- Simple Configurations
@@ -37,6 +46,7 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
+    lsp.rust_analyzer.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.tsserver.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
@@ -91,16 +101,6 @@ return function()
                     typeCheckingMode = 'strict',
                     useLibraryCodeForTypes = true,
                 }
-            }
-        }
-    }
-
-    -- Advanced Rust Analyzer Configuration
-    lsp.rust_analyzer.setup {
-        on_attach = on_lsp_attach,
-        settings = {
-            ['rust-analyzer'] = {
-                checkOnSave = { enable = false },
             }
         }
     }
