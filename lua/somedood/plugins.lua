@@ -3,7 +3,10 @@ function plugins(use)
     use 'wbthomason/packer.nvim'
 
     -- Editor Theming
-    use 'sainnhe/edge'
+    use {
+        'sainnhe/edge',
+        config = require'somedood.configs.edge',
+    }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -12,26 +15,35 @@ function plugins(use)
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
-    use { 'plasticboy/vim-markdown', ft = 'markdown' }
+    use {
+        'plasticboy/vim-markdown',
+        ft = 'markdown',
+        config = require'somedood.configs.markdown',
+    }
 
     -- Language Server Protocol
-    use { 'neoclide/coc.nvim', branch = 'release' }
+    use {
+        'neoclide/coc.nvim',
+        branch = 'release',
+        config = require'somedood.configs.coc',
+    }
 
     -- Telescope
+    local telescope = require'somedood.configs.telescope'
     use {
         'nvim-telescope/telescope.nvim',
         requires = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
-        config = require'somedood.configs.telescope'.core,
+        config = telescope.core,
     }
     use {
         'nvim-telescope/telescope-fzy-native.nvim',
         requires = 'nvim-telescope/telescope.nvim',
-        config = require'somedood.configs.telescope'.fzy,
+        config = telescope.fzy,
     }
     use {
         'fannheyward/telescope-coc.nvim',
         requires = 'nvim-telescope/telescope.nvim',
-        config = require'somedood.configs.telescope'.coc,
+        config = telescope.coc,
     }
 
     -- Syntax Analyzer
