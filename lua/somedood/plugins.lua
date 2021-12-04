@@ -46,6 +46,7 @@ function plugins(use)
     }
 
     -- Language Server
+    use 'nvim-lua/lsp_extensions.nvim'
     use {
         'nvim-lua/lsp-status.nvim',
         config = require'somedood.configs.lsp-status',
@@ -53,6 +54,7 @@ function plugins(use)
     use {
         'neovim/nvim-lspconfig',
         requires = {
+            'nvim-lua/lsp_extensions.nvim',
             'hrsh7th/cmp-nvim-lsp',
             'nvim-lua/lsp-status.nvim',
             'nvim-telescope/telescope.nvim',

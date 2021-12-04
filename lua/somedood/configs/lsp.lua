@@ -28,6 +28,16 @@ function on_lsp_attach(client, bufnr)
     return require'lsp-status'.on_attach(client, bufnr)
 end
 
+function on_inlay_hint()
+    require'lsp_extensions'.inlay_hints {
+        highlight = 'Comment',
+        prefix = ' ▶ ',
+        aligned = false,
+        only_current_line = false,
+        enabled = { 'ChainingHint' }
+    }
+end
+
 return function()
     local status = require'lsp-status'
     local lsp = require'lspconfig'
@@ -40,6 +50,11 @@ return function()
         update_in_insert = false,
         severity_sort = false,
     })
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
+        require'lsp_extensions.workspace.diagnostic'.handler, {
+            signs = { severity_limit = 'Warning' }
+        }
+    )
 
     local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
 
@@ -108,7 +123,10 @@ return function()
 
     -- Advanced Rust Analyzer Configuration
     lsp.rust_analyzer.setup {
-        on_attach = on_lsp_attach,
+        on_attach = function(client, bufnr)
+            vim.cmd[[autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua on_inlay_hint()]]
+            on_lsp_attach(client, bufnr)
+        end,
         capabilities = caps,
         settings = {
             ['rust-analyzer'] = {
