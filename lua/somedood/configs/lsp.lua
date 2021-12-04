@@ -48,7 +48,6 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
-    lsp.rust_analyzer.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.tsserver.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
@@ -105,5 +104,16 @@ return function()
                 }
             }
         }
+    }
+
+    -- Advanced Rust Analyzer Configuration
+    lsp.rust_analyzer.setup {
+        on_attach = on_lsp_attach,
+        capabilities = caps,
+        settings = {
+            ['rust-analyzer'] = {
+                checkOnSave = { command = 'clippy' },
+            },
+        },
     }
 end
