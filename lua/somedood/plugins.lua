@@ -21,6 +21,37 @@ function plugins(use)
         config = require'somedood.configs.markdown',
     }
 
+    -- Snippet Engine
+    use 'L3MON4D3/LuaSnip'
+    use {
+        'hrsh7th/nvim-cmp',
+        requires = 'L3MON4D3/LuaSnip',
+        config = require'somedood.configs.cmp',
+    }
+    use {
+        'hrsh7th/cmp-buffer',
+        requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+        'saadparwaiz1/cmp_luasnip',
+        requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+        'hrsh7th/cmp-nvim-lsp',
+        requires = 'hrsh7th/nvim-cmp',
+    }
+    use {
+        'hrsh7th/cmp-path',
+        requires = 'hrsh7th/nvim-cmp',
+    }
+
+    -- Language Server
+    use {
+        'neovim/nvim-lspconfig',
+        requires = 'hrsh7th/cmp-nvim-lsp',
+        config = require'somedood.configs.lsp',
+    }
+
     -- Telescope
     local telescope = require'somedood.configs.telescope'
     use {
