@@ -57,6 +57,11 @@ function plugins(use)
         requires = { 'nvim-treesitter/nvim-treesitter', 'sainnhe/edge' },
         config = require'somedood.configs.indent-blankline',
     }
+    use {
+        'numToStr/Comment.nvim',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = require'somedood.configs.comment',
+    }
 
     -- Miscellaneous
     use 'tpope/vim-fugitive'
