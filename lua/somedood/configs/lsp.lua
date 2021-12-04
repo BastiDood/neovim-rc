@@ -3,19 +3,25 @@ local function on_lsp_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, mode, combo, macro, { noremap = true, silent = true })
     end
 
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-    buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    -- Regular Keybindings
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
     buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-    buf_set_keymap('n', '<space>D', '<cmd>lua vim.diagnostic.open_float()<CR>')
+    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
     buf_set_keymap('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
     buf_set_keymap('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-    buf_set_keymap('n', '<space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    buf_set_keymap('n', '<Space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+
+    -- Telescope Integration
+    buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
+    buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>')
+    buf_set_keymap('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>')
+    buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>')
+    buf_set_keymap('n', '<Space>ws', '<cmd>Telescope lsp_workspace_symbols<CR>')
+    buf_set_keymap('n', '<Space>wd', '<cmd>Telescope lsp_workspace_diagnostics<CR>')
+    buf_set_keymap('n', '<Space>ds', '<cmd>Telescope lsp_document_symbols<CR>')
+    buf_set_keymap('n', '<Space>dd', '<cmd>Telescope lsp_document_diagnostics<CR>')
+    buf_set_keymap('n', '<Space>ca', '<cmd>Telescope lsp_code_actions<CR>')
 
     return require'lsp-status'.on_attach(client, bufnr)
 end

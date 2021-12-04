@@ -7,14 +7,6 @@ function plugins(use)
         'sainnhe/edge',
         config = require'somedood.configs.edge',
     }
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = {
-            'nvim-lua/lsp-status.nvim',
-            { 'kyazdani42/nvim-web-devicons', opt = true },
-        },
-        config = require'somedood.configs.lualine',
-    }
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
@@ -60,8 +52,20 @@ function plugins(use)
     }
     use {
         'neovim/nvim-lspconfig',
-        requires = { 'hrsh7th/cmp-nvim-lsp', 'nvim-lua/lsp-status.nvim' },
+        requires = {
+            'hrsh7th/cmp-nvim-lsp',
+            'nvim-lua/lsp-status.nvim',
+            'nvim-telescope/telescope.nvim',
+        },
         config = require'somedood.configs.lsp',
+    }
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'nvim-lua/lsp-status.nvim',
+            { 'kyazdani42/nvim-web-devicons', opt = true },
+        },
+        config = require'somedood.configs.lualine',
     }
 
     -- Telescope
