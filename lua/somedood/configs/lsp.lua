@@ -41,22 +41,9 @@ end
 return function()
     local status = require'lsp-status'
     local lsp = require'lspconfig'
-
-    -- Native LSP Diagnostics
-    vim.diagnostic.config({
-        virtual_text = true,
-        signs = true,
-        underline = true,
-        update_in_insert = false,
-        severity_sort = false,
-    })
-    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-        require'lsp_extensions.workspace.diagnostic'.handler, {
-            signs = { severity_limit = 'Warning' }
-        }
-    )
-
     local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
+
+    vim.diagnostic.config({ severity_sort = true })
 
     -- Simple Configurations
     lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps } 
