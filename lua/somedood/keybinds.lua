@@ -8,7 +8,7 @@ api.nvim_set_keymap('n', '<C-p>', [[<cmd>Telescope file_browser<cr>]], silent_no
 api.nvim_set_keymap('n', '<C-f>', [[<cmd>Telescope current_buffer_fuzzy_find<cr>]], silent_noremap )
 api.nvim_set_keymap('n', '<C-S-f>', [[<cmd>Telescope live_grep<cr>]], silent_noremap )
 api.nvim_set_keymap('n', '<C-,>', [[<cmd>lua require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') })<cr>]], silent_noremap)
-api.nvim_set_keymap('n', '<leader>ff', [[<cmd>Telescope fd<cr>]], silent_noremap)
+api.nvim_set_keymap('n', '<leader>ff', [[<cmd>Telescope find_files<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<leader>ft', [[<cmd>Telescope treesitter<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<leader>fG', [[<cmd>Telescope git_files<cr>]], silent_noremap)
 api.nvim_set_keymap('n', '<leader>Gb', [[<cmd>Telescope git_branches<cr>]], silent_noremap)
