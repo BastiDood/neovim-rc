@@ -4,7 +4,6 @@ Hello! Welcome to my Neovim configuration. Below is the tentative roadmap for th
 * Add debugging support with [vimspector](https://github.com/puremourning/vimspector) or [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 
 # External Dependencies
-The following programs are required to be installed for the configurations to work.
 * [Git](https://git-scm.com/)
     - Required by [packer.nvim](https://github.com/wbthomason/packer.nvim) for plugin management.
     - Required by [vim-fugitive](https://github.com/tpope/vim-fugitive) for Git integration support.
@@ -16,6 +15,10 @@ The following programs are required to be installed for the configurations to wo
     - Required by [Neovim's Treesitter integration](https://github.com/nvim-treesitter/nvim-treesitter) for parsing and highlighting support.
 * [LLVM Toolchain](https://releases.llvm.org/download.html)
     - Required by [Neovim's Treesitter integration](https://github.com/nvim-treesitter/nvim-treesitter) for compiling C-based parsers.
+* [fd](https://github.com/sharkdp/fd)
+    - Required by [Telescope's built-in file picker](https://github.com/nvim-telescope/telescope.nvim#file-pickers).
+* [ripgrep](https://github.com/BurntSushi/ripgrep)
+    - Required by [Telescope's built-in file picker](https://github.com/nvim-telescope/telescope.nvim#file-pickers).
 
 # Language Dependencies
 * [Python](https://www.python.org/downloads/)
@@ -30,7 +33,3 @@ The following programs are required to be installed for the configurations to wo
     - NPM also provides several other binaries used by some language servers.
 * [CMake](https://cmake.org/download/)
     - Used for CMake-based C++ projects.
-* [fd](https://github.com/sharkdp/fd)
-    - Required by [Telescope's built-in file picker](https://github.com/nvim-telescope/telescope.nvim#file-pickers).
-* [ripgrep](https://github.com/BurntSushi/ripgrep)
-    - Required by [Telescope's built-in file picker](https://github.com/nvim-telescope/telescope.nvim#file-pickers).
