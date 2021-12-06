@@ -1,7 +1,7 @@
 # Introduction
-Hello! Welcome to my Neovim configuration. It's not as clean as I would like it to be, but it works&trade; at the moment! Below is the tentative roadmap for the future:
+Hello! Welcome to my Neovim configuration. Below is the tentative roadmap for the future:
 
-* Add debugging support with [vimspector](https://github.com/puremourning/vimspector)
+* Add debugging support with [vimspector](https://github.com/puremourning/vimspector) or [nvim-dap](https://github.com/mfussenegger/nvim-dap)
 
 # External Dependencies
 The following programs are required to be installed for the configurations to work.
