@@ -43,6 +43,7 @@ return function()
     local lsp = require'lspconfig'
     local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
     caps.textDocument.completion.completionItem.snippetSupport = true
+    caps.textDocument.semanticHighlighting = true
 
     vim.diagnostic.config({ severity_sort = true })
 
@@ -55,7 +56,7 @@ return function()
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
-        cwd = {
+        cmd = {
             'clangd',
             '--clang-tidy',
             '--background-index',
@@ -67,7 +68,12 @@ return function()
         },
         on_attach = on_lsp_attach,
         capabilities = capabilities,
-        init_options = { clangdFileStatus = true },
+        init_options = {
+            clangdFileStatus = true,
+            usePlaceholders = true,
+            completeUnimported = true,
+            semanticHighlighting = true,
+        },
         handlers = status.extensions.clangd.setup(),
     } 
 
