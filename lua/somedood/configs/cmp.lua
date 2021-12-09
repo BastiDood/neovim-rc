@@ -14,13 +14,12 @@ return function()
             { name = 'path' },
         }),
         mapping = {
+            ['<C-n>'] = cmp.mapping.select_prev_item(),
+            ['<C-p>'] = cmp.mapping.select_next_item(),
             ['<C-Up>'] = cmp.mapping.scroll_docs(-4),
             ['<C-Down>'] = cmp.mapping.scroll_docs(4),
-            ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-            ['<C-e>'] = cmp.mapping({
-                i = cmp.mapping.abort(),
-                c = cmp.mapping.close(),
-            }),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
             ['<CR>'] = cmp.mapping.confirm {
                 select = true,
                 behavior = cmp.ConfirmBehavior.Replace,
