@@ -3,6 +3,9 @@ function on_lsp_attach(client, bufnr)
         vim.api.nvim_buf_set_keymap(bufnr, mode, combo, macro, { noremap = true, silent = true })
     end
 
+    -- Enable Omnifunc Integration
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     -- Regular Keybindings
     buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
     buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
@@ -50,7 +53,6 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
-    lsp.tsserver.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
@@ -103,11 +105,14 @@ return function()
     lsp.denols.setup {
         on_attach = on_lsp_attach,
         capabilities = caps,
-        init_options = {
-            enable = true,
-            lint = true,
-            importMap = 'imports.json',
-            config = 'tsconfig.json',
+        root_dir = lsp.util.root_pattern('deno.json'),
+        settings = {
+            deno = {
+                enable = true,
+                lint = true,
+                config = 'deno.json',
+                importMap = 'imports.json',
+            },
         },
     }
 
@@ -140,5 +145,13 @@ return function()
                 checkOnSave = { command = 'clippy' },
             },
         },
+    }
+
+    -- Advanced TypeScript Server Configuration
+    lsp.tsserver.setup {
+        autostart = false, -- Deno LSP takes precedence...
+        on_attach = on_lsp_attach,
+        capabilities = caps,
+        root_dir = lsp.util.root_pattern('package.json'),
     }
 end
