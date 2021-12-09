@@ -25,6 +25,5 @@ api.nvim_set_keymap('n', '<C-e>', [[<cmd>NvimTreeToggle<cr>]], noremap)
 
 -- Neovim Keybindings
 api.nvim_set_keymap('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
-api.nvim_set_keymap('n', 'Y', 'y$', noremap)
 api.nvim_set_keymap('n', '<C-S-k>', [[<cmd>m .-2<cr>==]], noremap)
 api.nvim_set_keymap('n', '<C-S-j>', [[<cmd>m .+1<cr>==]], noremap)
