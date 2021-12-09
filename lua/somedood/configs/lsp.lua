@@ -103,7 +103,12 @@ return function()
     lsp.denols.setup {
         on_attach = on_lsp_attach,
         capabilities = caps,
-        init_options = { enable = true, lint = true },
+        init_options = {
+            enable = true,
+            lint = true,
+            importMap = 'imports.json',
+            config = 'tsconfig.json',
+        },
     }
 
     -- Advanced Pyright Configuration
