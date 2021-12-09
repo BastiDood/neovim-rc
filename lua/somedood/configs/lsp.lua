@@ -42,8 +42,6 @@ return function()
     local status = require'lsp-status'
     local lsp = require'lspconfig'
     local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities()), status.capabilities)
-    caps.textDocument.completion.completionItem.snippetSupport = true
-    caps.textDocument.semanticHighlighting = true
 
     vim.diagnostic.config({ severity_sort = true })
 
@@ -66,7 +64,7 @@ return function()
             '--enable-config',
         },
         on_attach = on_lsp_attach,
-        capabilities = capabilities,
+        capabilities = caps,
         init_options = {
             clangdFileStatus = true,
             usePlaceholders = true,
