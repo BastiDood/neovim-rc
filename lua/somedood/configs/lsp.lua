@@ -54,6 +54,16 @@ return function()
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
+        cwd = {
+            'clangd',
+            '--clang-tidy',
+            '--background-index',
+            '--suggest-missing-includes',
+            '--all-scopes-completion',
+            '--completion-style=detailed',
+            '--header-insertion=iwyu',
+            '--enable-config',
+        },
         on_attach = on_lsp_attach,
         capabilities = capabilities,
         init_options = { clangdFileStatus = true },
