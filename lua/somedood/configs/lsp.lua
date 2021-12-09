@@ -60,7 +60,6 @@ return function()
             'clangd',
             '--clang-tidy',
             '--background-index',
-            '--suggest-missing-includes',
             '--all-scopes-completion',
             '--completion-style=detailed',
             '--header-insertion=iwyu',
