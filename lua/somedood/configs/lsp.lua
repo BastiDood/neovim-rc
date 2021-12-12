@@ -147,6 +147,9 @@ return function()
         },
     }
 
+    -- Advanced SystemVerilog Language Server Configuration
+    lsp.svls.setup { filetypes = { 'sv' } }
+
     -- Advanced TypeScript Server Configuration
     lsp.tsserver.setup {
         autostart = false, -- Deno LSP takes precedence...
