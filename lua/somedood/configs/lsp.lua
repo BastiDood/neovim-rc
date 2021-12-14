@@ -53,7 +53,6 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
-    lsp.svls.setup { on_attach = on_lsp_attach, capabilities = caps }
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
@@ -146,6 +145,13 @@ return function()
                 checkOnSave = { command = 'clippy' },
             },
         },
+    }
+
+    -- Advanced SVLS Configuration
+    lsp.svls.setup {
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+        root_dir = lsp.util.root_pattern('.git'),
     }
 
     -- Advanced TypeScript Server Configuration
