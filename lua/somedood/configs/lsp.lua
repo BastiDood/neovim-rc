@@ -18,14 +18,14 @@ function on_lsp_attach(client, bufnr)
     buf_set_keymap('n', '<Space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 
     -- Telescope Integration
+    buf_set_keymap('n', '<Space>wd', '<cmd>Telescope diagnostics<CR>')
+    buf_set_keymap('n', '<Space>dd', '<cmd>Telescope diagnostics bufnr=0<CR>')
     buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
     buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>')
     buf_set_keymap('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>')
     buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>')
     buf_set_keymap('n', '<Space>ws', '<cmd>Telescope lsp_workspace_symbols<CR>')
-    buf_set_keymap('n', '<Space>wd', '<cmd>Telescope lsp_workspace_diagnostics<CR>')
     buf_set_keymap('n', '<Space>ds', '<cmd>Telescope lsp_document_symbols<CR>')
-    buf_set_keymap('n', '<Space>dd', '<cmd>Telescope lsp_document_diagnostics<CR>')
     buf_set_keymap('n', '<Space>ca', '<cmd>Telescope lsp_code_actions<CR>')
 
     return require'lsp-status'.on_attach(client, bufnr)
