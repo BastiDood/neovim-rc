@@ -10,11 +10,6 @@ function plugins(use)
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
-    use {
-        'plasticboy/vim-markdown',
-        ft = 'markdown',
-        config = require'somedood.configs.markdown',
-    }
 
     -- Snippet Engine
     use 'L3MON4D3/LuaSnip'
