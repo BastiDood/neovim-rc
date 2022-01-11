@@ -53,7 +53,6 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
-    lsp.texlab.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
@@ -153,6 +152,20 @@ return function()
         on_attach = on_lsp_attach,
         capabilities = capabilities,
         root_dir = lsp.util.root_pattern('.git'),
+    }
+
+    -- Advanced TexLab Configuration
+    lsp.texlab.setup {
+        on_attach = on_lsp_attach,
+        capabilities = capabilities,
+        settings = {
+            texlab = {
+                build = {
+                    executable = 'tectonic',
+                    args = { '-X', 'build' },
+                },
+            },
+        },
     }
 
     -- Advanced TypeScript Server Configuration
