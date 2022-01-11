@@ -162,7 +162,7 @@ return function()
             texlab = {
                 build = {
                     executable = 'tectonic',
-                    args = { '-X', 'build' },
+                    args = { '-X', 'compile', '%f' },
                 },
             },
         },
