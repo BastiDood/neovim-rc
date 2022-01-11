@@ -53,6 +53,7 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
+    lsp.texlab.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
