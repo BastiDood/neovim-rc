@@ -50,4 +50,3 @@ o.hidden = true
 o.history = 500
 o.backup = false
 o.writebackup = false
-o.ffs = 'unix,dos'
