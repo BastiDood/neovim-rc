@@ -1,32 +1,36 @@
 function on_lsp_attach(client, bufnr)
     local function buf_set_keymap(mode, combo, macro)
-        vim.api.nvim_buf_set_keymap(bufnr, mode, combo, macro, { noremap = true, silent = true })
+        vim.keymap.set(mode, combo, macro, { buffer = bufnr, noremap = true, silent = true })
+    end
+    local function diag_open_float(scope)
+        return vim.diagnostic.open_float({ scope = scope })
     end
 
     -- Enable Omnifunc Integration
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Regular Keybindings
-    buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-    buf_set_keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-    buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    buf_set_keymap('n', '<Space>pd', [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'cursor' })<CR>]])
-    buf_set_keymap('n', '<Space>ld', [[<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<CR>]])
-    buf_set_keymap('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-    buf_set_keymap('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-    buf_set_keymap('n', '<Space>fmt', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+    buf_set_keymap('n', 'K', vim.lsp.buf.hover)
+    buf_set_keymap('n', '<F2>', vim.lsp.buf.rename)
+    buf_set_keymap('n', 'gD', vim.lsp.buf.declaration)
+    buf_set_keymap('n', '<C-k>', vim.lsp.buf.signature_help)
+    buf_set_keymap('n', '<Space>fmt', vim.lsp.buf.formatting)
+    buf_set_keymap('n', '<Space>pd', function() diag_open_float('cursor') end)
+    buf_set_keymap('n', '<Space>ld', function() diag_open_float('line') end)
+    buf_set_keymap('n', 'g[', vim.diagnostic.goto_prev)
+    buf_set_keymap('n', 'g]', vim.diagnostic.goto_prev)
 
     -- Telescope Integration
-    buf_set_keymap('n', '<Space>wd', '<cmd>Telescope diagnostics<CR>')
-    buf_set_keymap('n', '<Space>dd', '<cmd>Telescope diagnostics bufnr=0<CR>')
-    buf_set_keymap('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
-    buf_set_keymap('n', 'gi', '<cmd>Telescope lsp_implementations<CR>')
-    buf_set_keymap('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>')
-    buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>')
-    buf_set_keymap('n', '<Space>ws', '<cmd>Telescope lsp_workspace_symbols<CR>')
-    buf_set_keymap('n', '<Space>ds', '<cmd>Telescope lsp_document_symbols<CR>')
-    buf_set_keymap('n', '<Space>ca', '<cmd>Telescope lsp_code_actions<CR>')
+    local t = require'telescope.builtin'
+    buf_set_keymap('n', '<Space>wd', t.diagnostics)
+    buf_set_keymap('n', '<Space>dd', function() t.diagnostics({ bufnr = 0 }) end)
+    buf_set_keymap('n', 'gd', t.lsp_definitions)
+    buf_set_keymap('n', 'gi', t.lsp_implementations)
+    buf_set_keymap('n', 'gt', t.lsp_type_definitions)
+    buf_set_keymap('n', 'gr', t.lsp_references)
+    buf_set_keymap('n', '<Space>ws', t.lsp_workspace_symbols)
+    buf_set_keymap('n', '<Space>ds', t.lsp_document_symbols)
+    buf_set_keymap('n', '<Space>ca', t.lsp_code_actions)
 
     return require'lsp-status'.on_attach(client, bufnr)
 end
