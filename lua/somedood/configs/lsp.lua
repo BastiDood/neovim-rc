@@ -18,7 +18,7 @@ function on_lsp_attach(client, bufnr)
     buf_set_keymap('n', '<Space>pd', function() diag_open_float('cursor') end)
     buf_set_keymap('n', '<Space>ld', function() diag_open_float('line') end)
     buf_set_keymap('n', 'g[', vim.diagnostic.goto_prev)
-    buf_set_keymap('n', 'g]', vim.diagnostic.goto_prev)
+    buf_set_keymap('n', 'g]', vim.diagnostic.goto_next)
 
     -- Telescope Integration
     local t = require'telescope.builtin'
