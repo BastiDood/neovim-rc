@@ -147,6 +147,7 @@ return function()
         settings = {
             ['rust-analyzer'] = {
                 checkOnSave = { command = 'clippy' },
+                cargo = { autoreload = true },
             },
         },
     }
