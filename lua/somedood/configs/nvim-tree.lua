@@ -12,6 +12,7 @@ return function()
     }
 
     require'nvim-tree'.setup {
+        auto_reload_on_write = false,
         update_cwd = true,
         hijack_cursor = true,
         filters = { dotfiles = true },
