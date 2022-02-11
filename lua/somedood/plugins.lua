@@ -98,6 +98,7 @@ function plugins(use)
     -- Miscellaneous
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
+    use 'tpope/vim-repeat'
     use {
         'kyazdani42/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
