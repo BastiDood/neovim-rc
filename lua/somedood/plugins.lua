@@ -1,6 +1,9 @@
 function plugins(use)
     -- Plugin Manager
-    use 'wbthomason/packer.nvim'
+    use {
+		'wbthomason/packer.nvim',
+		commit = 'c5e98e3ca84843dbae47cd8f3a76bc38c6404241',
+	}
 
     -- Editor Theming
     use {
