@@ -1,6 +1,7 @@
 return function()
     require'nvim-treesitter.configs'.setup {
         ensure_installed = {
+            'bash',
             'c',
             'cmake',
             'comment',
@@ -19,6 +20,7 @@ return function()
             'tsx',
             'typescript',
             'verilog',
+            'vim',
             'yaml',
         },
         indent = { enable = true },
