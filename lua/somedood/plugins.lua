@@ -1,9 +1,6 @@
 function plugins(use)
     -- Plugin Manager
-    use {
-		'wbthomason/packer.nvim',
-		commit = 'c5e98e3ca84843dbae47cd8f3a76bc38c6404241',
-	}
+    use 'wbthomason/packer.nvim'
 
     -- Editor Theming
     use {
@@ -15,6 +12,7 @@ function plugins(use)
     use { 'rust-lang/rust.vim', ft = 'rust' }
 
     -- Snippet Engine
+    use 'rafamadriz/friendly-snippets'
     use 'L3MON4D3/LuaSnip'
     use {
         'hrsh7th/nvim-cmp',
