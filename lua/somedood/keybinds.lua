@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>Gc', [[<cmd>Git commit<cr>]], silent_noremap)
 vim.keymap.set('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap)
 
 -- NvimTree Keybindings
-vim.keymap.set('n', '<C-e>', [[<cmd>NvimTreeToggle<cr>]], noremap)
+vim.keymap.set('n', '<leader>n', [[<cmd>NvimTreeToggle<cr>]], noremap)
 
 -- Neovim Keybindings
 vim.keymap.set('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
