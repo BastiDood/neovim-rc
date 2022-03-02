@@ -163,11 +163,12 @@ return function()
     lsp.texlab.setup {
         on_attach = on_lsp_attach,
         capabilities = capabilities,
+        filetypes = { 'tex', 'bib', 'plaintex' },
         settings = {
             texlab = {
                 build = {
                     executable = 'tectonic',
-                    args = { '-X', 'compile', '%f' },
+                    args = { '-X', 'build' },
                 },
             },
         },
