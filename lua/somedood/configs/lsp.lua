@@ -107,6 +107,7 @@ return function()
 
     -- Advanced Deno Configuration
     lsp.denols.setup {
+        autostart = false,
         on_attach = on_lsp_attach,
         capabilities = caps,
         root_dir = lsp.util.root_pattern('deno.json'),
@@ -176,7 +177,7 @@ return function()
 
     -- Advanced TypeScript Server Configuration
     lsp.tsserver.setup {
-        autostart = false, -- Deno LSP takes precedence...
+        autostart = false,
         on_attach = on_lsp_attach,
         capabilities = caps,
         root_dir = lsp.util.root_pattern('package.json'),
