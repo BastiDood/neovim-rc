@@ -56,7 +56,6 @@ return function()
     lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
-    lsp.jsonls.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
@@ -117,6 +116,24 @@ return function()
                 lint = true,
                 config = 'deno.json',
                 importMap = 'imports.json',
+            },
+        },
+    }
+
+    -- Advanced JSON Configuration
+    lsp.jsonls.setup {
+        on_attach = on_lsp_attach,
+        capabilities = caps,
+        settings = {
+            json = {
+                schemas = require'schemastore'.json.schemas {
+                    select = {
+                        'package.json',
+                        'jsconfig.json',
+                        'tsconfig.json',
+                        'CMake Presets',
+                    },
+                }
             },
         },
     }
