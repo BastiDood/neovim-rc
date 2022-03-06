@@ -88,7 +88,6 @@ return function()
             duplicateProperties = 'error',
             ieHack = 'error',
             important = 'warning',
-            importStatement = 'warning',
             universalSelector = 'error',
             unknownVendorSpecificProperties = 'error',
             zeroUnits = 'error',
