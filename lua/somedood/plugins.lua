@@ -10,6 +10,7 @@ function plugins(use)
 
     -- Language Support
     use { 'rust-lang/rust.vim', ft = 'rust' }
+    use 'harenome/vim-mipssyntax'
 
     -- Snippet Engine
     use 'rafamadriz/friendly-snippets'
