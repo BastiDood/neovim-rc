@@ -4,7 +4,7 @@ local function has_words_before()
 end
 
 return function()
-    require'luasnip.loaders.from_vscode'.load()
+    require'luasnip.loaders.from_vscode'.lazy_load()
     local cmp = require'cmp'
     cmp.setup {
         snippet = { expand = function(args) require'luasnip'.lsp_expand(args.body) end },
