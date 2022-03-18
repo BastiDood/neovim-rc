@@ -114,7 +114,6 @@ return function()
                 enable = true,
                 lint = true,
                 config = 'deno.json',
-                importMap = 'imports.json',
             },
         },
     }
