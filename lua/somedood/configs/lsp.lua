@@ -53,7 +53,6 @@ return function()
     vim.diagnostic.config({ severity_sort = true })
 
     -- Simple Configurations
-    lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
