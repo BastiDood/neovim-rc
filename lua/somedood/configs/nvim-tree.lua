@@ -1,6 +1,5 @@
 return function()
     local g = vim.g
-    g.nvim_tree_indent_markers = 1
     g.nvim_tree_highlight_opened_files = 1
     g.nvim_tree_add_trailing = 1
     g.nvim_tree_group_empty = 1
@@ -16,6 +15,7 @@ return function()
         update_cwd = true,
         hijack_cursor = true,
         filters = { dotfiles = true },
+        renderer = { enable = true },
         git = { ignore = true },
         view = { side = 'right' },
     }
