@@ -56,6 +56,7 @@ return function()
     lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps } 
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps } 
+    lsp.verible.setup { on_attach = on_lsp_attach, capabilities = caps } 
 
     -- Advanced Clangd Configuration
     lsp.clangd.setup {
@@ -166,13 +167,6 @@ return function()
                 cargo = { autoreload = true },
             },
         },
-    }
-
-    -- Advanced SVLS Configuration
-    lsp.svls.setup {
-        on_attach = on_lsp_attach,
-        capabilities = capabilities,
-        root_dir = lsp.util.root_pattern('.git'),
     }
 
     -- Advanced TexLab Configuration
