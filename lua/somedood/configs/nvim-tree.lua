@@ -15,7 +15,7 @@ return function()
         update_cwd = true,
         hijack_cursor = true,
         filters = { dotfiles = true },
-        renderer = { enable = true },
+        renderer = { indent_markers = { enable = true } },
         git = { ignore = true },
         view = { side = 'right' },
     }
