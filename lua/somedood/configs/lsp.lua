@@ -19,6 +19,7 @@ function on_lsp_attach(client, bufnr)
     buf_set_keymap('n', '<Space>ld', function() diag_open_float('line') end)
     buf_set_keymap('n', 'g[', vim.diagnostic.goto_prev)
     buf_set_keymap('n', 'g]', vim.diagnostic.goto_next)
+    buf_set_keymap('n', '<Space>ca', vim.lsp.buf.code_action)
 
     -- Telescope Integration
     local t = require'telescope.builtin'
@@ -30,9 +31,8 @@ function on_lsp_attach(client, bufnr)
     buf_set_keymap('n', 'gr', t.lsp_references)
     buf_set_keymap('n', '<Space>ws', t.lsp_workspace_symbols)
     buf_set_keymap('n', '<Space>ds', t.lsp_document_symbols)
-    buf_set_keymap('n', '<Space>ca', t.lsp_code_actions)
 
-    return require'lsp-status'.on_attach(client, bufnr)
+    return require'lsp-status'.on_attach(client)
 end
 
 function on_inlay_hint()
