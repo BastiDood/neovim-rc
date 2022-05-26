@@ -25,7 +25,8 @@ return function()
         use_treesitter = true,
     }
 
-    local yellow = vim.fn['edge#get_palette']('default').yellow[1];
+    -- HACK: Apparently, VimScript's `extend` function doesn't detect that `{}` is a table.
+    local yellow = vim.fn['edge#get_palette']('default', { empty = {} }).yellow[1];
     vim.cmd(string.format('highlight IndentBlanklineContextChar gui=nocombine guifg=%s', yellow))
     vim.cmd(string.format('highlight IndentBlanklineContextStart gui=underline,bold guisp=%s', yellow))
 end
