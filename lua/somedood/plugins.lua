@@ -89,11 +89,6 @@ function plugins(use)
         config = require'somedood.configs.treesitter',
     }
     use {
-        'lukas-reineke/indent-blankline.nvim',
-        requires = { 'nvim-treesitter/nvim-treesitter', 'sainnhe/edge' },
-        config = require'somedood.configs.indent-blankline',
-    }
-    use {
         'numToStr/Comment.nvim',
         requires = 'nvim-treesitter/nvim-treesitter',
         config = require'somedood.configs.comment',
