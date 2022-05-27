@@ -1,6 +1,11 @@
 local g = vim.g
 local o = vim.o
 
+-- Neovide Configuration
+g.neovide_input_use_logo = false
+g.neovide_cursor_vfx_mode = 'torpedo'
+g.neovide_cursor_vfx_lifetime = 1.0
+
 -- Vim Globals
 g.mapleader = ' '
 g.netrw_liststyle = 3
