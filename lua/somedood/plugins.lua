@@ -81,6 +81,11 @@ function plugins(use)
         requires = 'nvim-telescope/telescope.nvim',
         config = telescope.fzy,
     }
+    use {
+        'nvim-telescope/telescope-ui-select.nvim',
+        requires = 'nvim-telescope/telescope.nvim',
+        config = telescope.ui,
+    }
 
     -- Syntax Analyzer
     use {
