@@ -164,8 +164,9 @@ return function()
         capabilities = caps,
         settings = {
             ['rust-analyzer'] = {
-                checkOnSave = { command = 'clippy' },
                 cargo = { autoreload = true },
+                checkOnSave = { command = 'clippy' },
+                imports = { prefer = { no = { std = true } } },
             },
         },
     }
