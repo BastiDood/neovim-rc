@@ -16,6 +16,7 @@ return function()
             'markdown',
             'python',
             'rust',
+            'sql',
             'svelte',
             'toml',
             'tsx',
