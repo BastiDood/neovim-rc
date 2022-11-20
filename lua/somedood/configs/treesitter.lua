@@ -14,6 +14,7 @@ return function()
             'latex',
             'lua',
             'markdown',
+            'mermaid',
             'python',
             'rust',
             'sql',
