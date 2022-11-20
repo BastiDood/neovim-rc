@@ -158,7 +158,10 @@ return function()
     -- Advanced Rust Analyzer Configuration
     lsp.rust_analyzer.setup {
         on_attach = function(client, bufnr)
-            vim.cmd[[autocmd InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs :lua on_inlay_hint()]]
+            vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufEnter', 'BufWinEnter', 'TabEnter', 'BufWritePost' }, {
+                pattern = '*.rs',
+                callback = on_inlay_hint,
+            })
             on_lsp_attach(client, bufnr)
         end,
         capabilities = caps,
