@@ -7,15 +7,15 @@ return function()
         renderer = {
             add_trailing = true,
             group_empty = true,
-            highlight_opened_files = 'icon',
             indent_markers = { enable = true },
             icons = {
                 show = {
-                    file = true,
-                    folder = true,
-                    folder_arrow = true,
+                    file = false,
+                    folder = false,
+                    folder_arrow = false,
                     git = false,
-                }
+                    modified = false,
+                },
             },
         },
         git = { ignore = true },

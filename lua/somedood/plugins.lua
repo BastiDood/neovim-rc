@@ -62,10 +62,7 @@ function plugins(use)
     }
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {
-            'nvim-lua/lsp-status.nvim',
-            { 'nvim-tree/nvim-web-devicons', opt = true },
-        },
+        requires = 'nvim-lua/lsp-status.nvim',
         config = require'somedood.configs.lualine',
     }
 
