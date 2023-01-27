@@ -64,7 +64,7 @@ function plugins(use)
         'nvim-lualine/lualine.nvim',
         requires = {
             'nvim-lua/lsp-status.nvim',
-            { 'kyazdani42/nvim-web-devicons', opt = true },
+            { 'nvim-tree/nvim-web-devicons', opt = true },
         },
         config = require'somedood.configs.lualine',
     }
@@ -104,7 +104,7 @@ function plugins(use)
     use 'tpope/vim-surround'
     use 'tpope/vim-repeat'
     use {
-        'kyazdani42/nvim-tree.lua',
+        'nvim-tree/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
         config = require'somedood.configs.nvim-tree',
     }
