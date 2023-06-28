@@ -16,6 +16,7 @@ vim.cmd('cd /Dev')
 -- Indentation
 o.foldmethod = 'expr'
 o.foldexpr = [[nvim_treesitter#foldexpr()]]
+o.foldenable = false
 o.autoindent = true
 o.expandtab = true
 o.shiftwidth = 4
