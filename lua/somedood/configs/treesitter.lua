@@ -28,6 +28,7 @@ return function()
             'verilog',
             'vim',
             'yaml',
+            'zig',
         },
         indent = { enable = true },
         highlight = {

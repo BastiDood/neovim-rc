@@ -195,4 +195,11 @@ return function()
         capabilities = caps,
         root_dir = lsp.util.root_pattern('package.json'),
     }
+
+    -- Advanced Zig Language Server Configuration
+    lsp.zls.setup {
+        autostart = true,
+        on_attach = on_lsp_attach,
+        capabilities = caps,
+    }
 end
