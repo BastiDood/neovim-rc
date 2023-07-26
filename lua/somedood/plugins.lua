@@ -95,6 +95,11 @@ function plugins(use)
         requires = 'nvim-treesitter/nvim-treesitter',
         config = require'somedood.configs.comment',
     }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = require'somedood.configs.context',
+    }
 
     -- Miscellaneous
     use 'tpope/vim-fugitive'
