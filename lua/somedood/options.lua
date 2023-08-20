@@ -22,6 +22,7 @@ o.expandtab = true
 o.shiftwidth = 4
 o.tabstop = 4
 o.smarttab = true
+o.breakindent = true
 
 -- Performance Options
 o.lazyredraw = true
