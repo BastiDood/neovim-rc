@@ -5,7 +5,7 @@ Hello! Welcome to my Neovim configuration. Below is the tentative roadmap for th
 
 # External Dependencies
 * [Git](https://git-scm.com/)
-    - Required by [packer.nvim](https://github.com/wbthomason/packer.nvim) for plugin management.
+    - Required by [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
     - Required by [vim-fugitive](https://github.com/tpope/vim-fugitive) for Git integration support.
 * [Rustup](https://www.rust-lang.org/tools/install)
     - Toolchain manager for the [Rust programming language](https://www.rust-lang.org/).
