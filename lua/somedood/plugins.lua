@@ -67,7 +67,7 @@ require'lazy'.setup({
         'nvim-treesitter/nvim-treesitter-context',
         config = require'somedood.configs.context',
     },
-    'tpope/vim-fugitive',
+    { 'tpope/vim-fugitive', cmd = 'Git' },
     'tpope/vim-repeat',
     { 'tpope/vim-surround', event = 'InsertEnter' },
     {
