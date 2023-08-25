@@ -17,8 +17,6 @@ vim.keymap.set('n', '<leader>l', function() require'lazy'.home() end, silent_nor
 
 -- Vim Fugitive
 vim.keymap.set('n', '<leader>Gs', [[<cmd>Git<cr>]], silent_noremap)
-vim.keymap.set('n', '<leader>Gc', [[<cmd>Git commit<cr>]], silent_noremap)
-vim.keymap.set('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap)
 
 -- NvimTree
 vim.keymap.set('n', '<leader>n', [[<cmd>NvimTreeToggle<cr>]], noremap)
