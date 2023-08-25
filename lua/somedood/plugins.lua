@@ -112,6 +112,8 @@ require'lazy'.setup({
         config = require'somedood.configs.nvim-tree',
     },
 }, {
+    install = { colorscheme = { 'edge' } },
+    change_detection = { enabled = false },
     ui = {
         icons = {
             cmd = "⌘",
