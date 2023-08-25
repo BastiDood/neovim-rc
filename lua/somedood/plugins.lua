@@ -44,17 +44,32 @@ require'lazy'.setup({
     { 'nvim-lualine/lualine.nvim', config = require'somedood.configs.lualine' },
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim' },
+        dependencies = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-fzy-native.nvim',
+            'nvim-telescope/telescope-ui-select.nvim',
+        },
+        keys = {
+            { '<C-f>' , function() require'telescope.builtin'.current_buffer_fuzzy_find() end },
+            { '<C-S-f>' , function() require'telescope.builtin'.live_grep() end },
+            { '<C-,>' , function() require'telescope.builtin'.find_files({ cwd = vim.fn.stdpath('config') }) end },
+            { '<leader>ff' , function() require'telescope.builtin'.find_files() end },
+            { '<leader>ft' , function() require'telescope.builtin'.treesitter() end },
+            { '<leader>fG' , function() require'telescope.builtin'.git_files() end },
+            { '<leader>Gb' , function() require'telescope.builtin'.git_branches() end },
+            { '<leader>fb' , function() require'telescope.builtin'.buffers() end },
+        },
         config = telescope.core,
     },
     {
         'nvim-telescope/telescope-fzy-native.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim' },
+        lazy = true,
         config = telescope.fzy,
     },
     {
         'nvim-telescope/telescope-ui-select.nvim',
-        dependencies = { 'nvim-telescope/telescope.nvim' },
+        lazy = true,
         config = telescope.ui,
     },
     {
@@ -72,11 +87,11 @@ require'lazy'.setup({
         config = require'somedood.configs.context',
     },
     { 'tpope/vim-fugitive', cmd = 'Git' },
-    'tpope/vim-repeat',
+    { 'tpope/vim-repeat',  },
     { 'tpope/vim-surround', event = 'InsertEnter' },
     {
         'nvim-tree/nvim-tree.lua',
-        cmd = 'NvimTreeToggle',
+        keys = { '<leader>n', [[<cmd>NvimTreeToggle<cr>]] },
         config = require'somedood.configs.nvim-tree',
     },
 }, {
