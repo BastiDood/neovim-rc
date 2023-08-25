@@ -17,7 +17,7 @@ local telescope = require'somedood.configs.telescope'
 require'lazy'.setup({
     { 'sainnhe/edge', config = require'somedood.configs.edge' },
     { 'rust-lang/rust.vim', ft = 'rust' },
-    'rafamadriz/friendly-snippets',
+    { 'rafamadriz/friendly-snippets', event = 'InsertEnter' },
     {
         'hrsh7th/nvim-cmp',
         event = 'InsertEnter',
@@ -35,10 +35,12 @@ require'lazy'.setup({
         event = 'InsertEnter',
         config = require'somedood.configs.autopairs',
     },
-    'b0o/schemastore.nvim',
-    'nvim-lua/lsp_extensions.nvim',
     { 'nvim-lua/lsp-status.nvim', config = require'somedood.configs.lsp-status' },
-    { 'neovim/nvim-lspconfig', config = require'somedood.configs.lsp' },
+    {
+        'neovim/nvim-lspconfig',
+        dependencies = { 'b0o/schemastore.nvim', 'nvim-lua/lsp_extensions.nvim' },
+        config = require'somedood.configs.lsp',
+    },
     { 'nvim-lualine/lualine.nvim', config = require'somedood.configs.lualine' },
     {
         'nvim-telescope/telescope.nvim',
@@ -60,18 +62,14 @@ require'lazy'.setup({
         build = ':TSUpdate',
         config = require'somedood.configs.treesitter',
     },
-    {
-        'numToStr/Comment.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-        config = require'somedood.configs.comment',
-    },
+    { 'numToStr/Comment.nvim', config = require'somedood.configs.comment' },
     {
         'nvim-treesitter/nvim-treesitter-context',
         config = require'somedood.configs.context',
     },
     'tpope/vim-fugitive',
-    'tpope/vim-surround',
     'tpope/vim-repeat',
+    { 'tpope/vim-surround', event = 'InsertEnter' },
     {
         'nvim-tree/nvim-tree.lua',
         cmd = 'NvimTreeToggle',
