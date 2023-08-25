@@ -62,7 +62,11 @@ require'lazy'.setup({
         build = ':TSUpdate',
         config = require'somedood.configs.treesitter',
     },
-    { 'numToStr/Comment.nvim', config = require'somedood.configs.comment' },
+    {
+        'numToStr/Comment.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        config = require'somedood.configs.comment',
+    },
     {
         'nvim-treesitter/nvim-treesitter-context',
         config = require'somedood.configs.context',
