@@ -35,13 +35,26 @@ require'lazy'.setup({
         event = 'InsertEnter',
         config = require'somedood.configs.autopairs',
     },
-    { 'nvim-lua/lsp-status.nvim', config = require'somedood.configs.lsp-status' },
+    {
+        'nvim-lua/lsp-status.nvim',
+        lazy = true,
+        config = require'somedood.configs.lsp-status',
+    },
     {
         'neovim/nvim-lspconfig',
-        dependencies = { 'b0o/schemastore.nvim', 'nvim-lua/lsp_extensions.nvim' },
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = {
+            'b0o/schemastore.nvim',
+            'nvim-lua/lsp_extensions.nvim',
+            'nvim-lua/lsp-status.nvim',
+        },
         config = require'somedood.configs.lsp',
     },
-    { 'nvim-lualine/lualine.nvim', config = require'somedood.configs.lualine' },
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-lua/lsp-status.nvim' },
+        config = require'somedood.configs.lualine',
+    },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
@@ -75,6 +88,9 @@ require'lazy'.setup({
     {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
+        keys = { { 'c[', function() require'treesitter-context'.go_to_context() end } },
         config = require'somedood.configs.treesitter',
     },
     {
@@ -84,14 +100,15 @@ require'lazy'.setup({
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
+        lazy = true,
         config = require'somedood.configs.context',
     },
-    { 'tpope/vim-fugitive', cmd = 'Git' },
-    { 'tpope/vim-repeat',  },
+    { 'tpope/vim-fugitive', keys = { { '<leader>Gs', [[<cmd>Git<cr>]] } } },
+    { 'tpope/vim-repeat', event = { 'BufReadPre', 'BufNewFile' } },
     { 'tpope/vim-surround', event = 'InsertEnter' },
     {
         'nvim-tree/nvim-tree.lua',
-        keys = { '<leader>n', [[<cmd>NvimTreeToggle<cr>]] },
+        keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
         config = require'somedood.configs.nvim-tree',
     },
 }, {
