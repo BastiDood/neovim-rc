@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Define plugins.
 local telescope = require'somedood.configs.telescope'
 require'lazy'.setup({
-    { 'sainnhe/edge', config = require'somedood.configs.edge', lazy = false },
+    { 'sainnhe/edge', config = require'somedood.configs.edge' },
     { 'rust-lang/rust.vim', ft = 'rust' },
     'rafamadriz/friendly-snippets',
     'L3MON4D3/LuaSnip',
