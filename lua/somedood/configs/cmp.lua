@@ -12,7 +12,7 @@ return function()
         sources = cmp.config.sources({
             { name = 'nvim_lsp', max_item_count = 15 },
             { name = 'luasnip', max_item_count = 5 },
-            { name = 'buffer', max_item_count = 10, keyword_length = 5 },
+            { name = 'buffer', max_item_count = 10, keyword_length = 4 },
             { name = 'path', max_item_count = 5 },
         }),
         mapping = cmp.mapping.preset.insert {

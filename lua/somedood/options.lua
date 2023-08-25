@@ -36,7 +36,6 @@ o.scrolloff = 5
 o.hlsearch = false
 
 -- User Interface Options
-vim.cmd('colorscheme edge')
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect', 'preview' }
 o.mouse = 'n'
 o.showmode = false
