@@ -106,5 +106,19 @@ require'lazy'.setup({
             task = "📌",
             lazy = "💤 ",
         },
-  },
+    },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                'gzip',
+                'tarPlugin',
+                'zipPlugin',
+                'tohtml',
+                'tutor',
+                'netrwPlugin',
+                'shada',
+                'spellfile',
+            },
+        },
+    },
 })
