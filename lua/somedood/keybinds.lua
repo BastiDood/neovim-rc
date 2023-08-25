@@ -1,7 +1,7 @@
 local noremap = { noremap = true }
 local silent_noremap = { noremap = true, silent = true }
 
--- Telescope Keybindings
+-- Telescope
 local t = require'telescope.builtin'
 vim.keymap.set('n', '<C-f>', t.current_buffer_fuzzy_find, silent_noremap )
 vim.keymap.set('n', '<C-S-f>', t.live_grep, silent_noremap )
@@ -12,15 +12,18 @@ vim.keymap.set('n', '<leader>fG', t.git_files, silent_noremap)
 vim.keymap.set('n', '<leader>Gb', t.git_branches, silent_noremap)
 vim.keymap.set('n', '<leader>fb', t.buffers, silent_noremap)
 
--- Vim Fugitive Keybindings
+-- Lazy.nvim
+vim.keymap.set('n', '<leader>l', function() require'lazy'.home() end, silent_noremap)
+
+-- Vim Fugitive
 vim.keymap.set('n', '<leader>Gs', [[<cmd>Git<cr>]], silent_noremap)
 vim.keymap.set('n', '<leader>Gc', [[<cmd>Git commit<cr>]], silent_noremap)
 vim.keymap.set('n', '<leader>Gp', [[<cmd>Git push<cr>]], silent_noremap)
 
--- NvimTree Keybindings
+-- NvimTree
 vim.keymap.set('n', '<leader>n', [[<cmd>NvimTreeToggle<cr>]], noremap)
 
--- Neovim Keybindings
+-- Neovim
 vim.keymap.set('n', '<C-s>', [[<cmd>up<cr>]], silent_noremap)
 vim.keymap.set('n', '<C-S-k>', [[<cmd>m .-2<cr>==]], noremap)
 vim.keymap.set('n', '<C-S-j>', [[<cmd>m .+1<cr>==]], noremap)
