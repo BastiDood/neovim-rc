@@ -10,9 +10,6 @@ g.neovide_cursor_vfx_lifetime = 1.0
 g.mapleader = ' '
 g.netrw_liststyle = 3
 
--- Switch to Development Directory
-vim.cmd('cd /Dev')
-
 -- Indentation
 o.foldmethod = 'expr'
 o.foldexpr = [[nvim_treesitter#foldexpr()]]
