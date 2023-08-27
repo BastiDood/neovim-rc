@@ -49,6 +49,7 @@ o.splitright = true
 
 -- Miscellaneous
 vim.opt.shortmess:append({ c = true })
+o.ignorecase = true
 o.smartcase = true
 o.hidden = true
 o.history = 500
