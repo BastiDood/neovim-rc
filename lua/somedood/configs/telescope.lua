@@ -23,17 +23,10 @@ return {
                     find_command = { 'fd', '--type', 'f', '--strip-cwd-prefix' },
                 },
             },
-            extensions = {
-                fzy_native = {
-                    override_generic_sorter = false,
-                    override_file_sorter = true,
-                },
-                ['ui-select'] = { require'telescope.themes'.get_dropdown { } },
-            },
         }
     end,
-    fzy = function()
-        require'telescope'.load_extension('fzy_native')
+    fzf = function()
+        require'telescope'.load_extension('fzf')
     end,
     ui = function()
         require'telescope'.load_extension('ui-select')
