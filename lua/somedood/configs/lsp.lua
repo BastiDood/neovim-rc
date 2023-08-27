@@ -31,8 +31,6 @@ function on_lsp_attach(client, bufnr)
     buf_set_keymap('n', 'gr', t.lsp_references)
     buf_set_keymap('n', '<Space>ws', t.lsp_workspace_symbols)
     buf_set_keymap('n', '<Space>ds', t.lsp_document_symbols)
-
-    return require'lsp-status'.on_attach(client)
 end
 
 function on_inlay_hint()
@@ -46,9 +44,8 @@ function on_inlay_hint()
 end
 
 return function()
-    local status = require'lsp-status'
     local lsp = require'lspconfig'
-    local caps = vim.tbl_extend('keep', require'cmp_nvim_lsp'.default_capabilities(), status.capabilities)
+    local caps = require'cmp_nvim_lsp'.default_capabilities()
 
     vim.diagnostic.config({ severity_sort = true })
 
@@ -78,7 +75,6 @@ return function()
             completeUnimported = true,
             semanticHighlighting = true,
         },
-        handlers = status.extensions.clangd.setup(),
     } 
 
     -- Advanced CSS Configuration

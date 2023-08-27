@@ -36,24 +36,24 @@ require'lazy'.setup({
         config = require'somedood.configs.autopairs',
     },
     {
-        'nvim-lua/lsp-status.nvim',
-        lazy = true,
-        config = require'somedood.configs.lsp-status',
-    },
-    {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'b0o/schemastore.nvim',
             'nvim-lua/lsp_extensions.nvim',
-            'nvim-lua/lsp-status.nvim',
         },
         config = require'somedood.configs.lsp',
     },
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-lua/lsp-status.nvim' },
         config = require'somedood.configs.lualine',
+    },
+    {
+        -- FIXME: Regularly check for progress on the rewrite!
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        event = 'LspAttach',
+        config = require'somedood.configs.fidget',
     },
     {
         'nvim-telescope/telescope.nvim',
