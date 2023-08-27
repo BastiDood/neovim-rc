@@ -55,3 +55,5 @@ o.hidden = true
 o.history = 500
 o.backup = false
 o.writebackup = false
+o.grepformat = '%f:%l:%c:%m'
+o.grepprg = 'rg --vimgrep'
