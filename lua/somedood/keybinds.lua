@@ -33,6 +33,15 @@ vim.keymap.set('n', '<C-0>', rst_font, noremap)
 vim.keymap.set('n', '<C-->', dec_font, noremap)
 vim.keymap.set('n', '<C-=>', inc_font, noremap)
 
+-- Goneovim
+local fullscreen = false
+if vim.g.gonvim_running then
+    vim.keymap.set('n', '<F11>', function()
+        fullscreen = not fullscreen
+        vim.cmd { cmd = 'GonvimFullscreen', args = { fullscreen and 1 or 0 } }
+    end, noremap)
+end
+
 -- Lazy.nvim
 vim.keymap.set('n', '<leader>l', function() require'lazy'.home() end, noremap)
 
