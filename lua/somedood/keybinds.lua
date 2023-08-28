@@ -13,25 +13,22 @@ local function update_with_print()
     vim.print('Font size changed to ' .. size)
 end
 
-local function rst_font()
+update_font()
+vim.keymap.set('n', '<C-0>', function()
+    -- Reset Font
     size = default
     update_with_print()
-end
-
-local function inc_font()
-    size = size + 1
-    update_with_print()
-end
-
-local function dec_font()
+end, noremap)
+vim.keymap.set('n', '<C-->', function()
+    -- Decrement Font
     size = math.max(size - 1, 2)
     update_with_print()
-end
-
-update_font()
-vim.keymap.set('n', '<C-0>', rst_font, noremap)
-vim.keymap.set('n', '<C-->', dec_font, noremap)
-vim.keymap.set('n', '<C-=>', inc_font, noremap)
+end, noremap)
+vim.keymap.set('n', '<C-=>', function()
+    -- Increase Font
+    size = size + 1
+    update_with_print()
+end, noremap)
 
 -- Goneovim
 local fullscreen = false
