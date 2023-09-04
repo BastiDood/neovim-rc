@@ -47,11 +47,12 @@ return function()
     local lsp = require'lspconfig'
     local caps = require'cmp_nvim_lsp'.default_capabilities()
 
-    vim.diagnostic.config({ severity_sort = true })
+    vim.diagnostic.config { severity_sort = true }
 
     -- Simple Configurations
     lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps }
+    lsp.gopls.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.svelte.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.svls.setup { on_attach = on_lsp_attach, capabilities = caps, single_file_support = true }
