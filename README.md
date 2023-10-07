@@ -1,8 +1,3 @@
-# Introduction
-Hello! Welcome to my Neovim configuration. Below is the tentative roadmap for the future:
-
-* Add debugging support with [vimspector](https://github.com/puremourning/vimspector) or [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-
 # External Dependencies
 * [Git](https://git-scm.com/)
     - Required by [lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management.
