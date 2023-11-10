@@ -112,7 +112,7 @@ return function()
             deno = {
                 enable = true,
                 lint = true,
-                config = 'deno.json',
+                unstable = true,
             },
         },
     }
