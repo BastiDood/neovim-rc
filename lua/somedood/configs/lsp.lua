@@ -54,6 +54,7 @@ return function()
     lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.gopls.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps }
+    lsp.nushell.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.svelte.setup { on_attach = on_lsp_attach, capabilities = caps }
     lsp.svls.setup { on_attach = on_lsp_attach, capabilities = caps, single_file_support = true }
 
