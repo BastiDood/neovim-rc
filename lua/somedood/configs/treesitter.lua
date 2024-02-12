@@ -25,6 +25,7 @@ return function()
             'lua',
             'markdown',
             'mermaid',
+            'nu',
             'python',
             'ron',
             'rust',

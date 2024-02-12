@@ -83,7 +83,10 @@ require'lazy'.setup({
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         event = { 'BufReadPre', 'BufNewFile' },
-        dependencies = { { 'nvim-treesitter/nvim-treesitter-context', config = require'somedood.configs.context' } },
+        dependencies = {
+            { 'nvim-treesitter/nvim-treesitter-context', config = require'somedood.configs.context' },
+            { 'nushell/tree-sitter-nu' },
+        },
         keys = { { 'c[', function() require'treesitter-context'.go_to_context() end } },
         config = require'somedood.configs.treesitter',
     },
