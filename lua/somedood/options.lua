@@ -42,7 +42,6 @@ vim.opt.splitright = true
 vim.opt.inccommand = 'split'
 
 -- User Interface Options
-vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect', 'preview' }
 vim.opt.shortmess:append { c = true }
 
 -- Convenience shortcuts for moving the focus from one window to another.

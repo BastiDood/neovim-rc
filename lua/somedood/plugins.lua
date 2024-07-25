@@ -21,17 +21,23 @@ require'lazy'.setup {
     spec = {
         'tpope/vim-sleuth',
         { 'sainnhe/edge', config = require'somedood.configs.edge' },
-        { 'rust-lang/rust.vim', ft = 'rust' },
-        { 'rafamadriz/friendly-snippets', event = 'InsertEnter' },
         {
             'hrsh7th/nvim-cmp',
             event = 'InsertEnter',
             dependencies = {
+                {
+                    'L3MON4D3/LuaSnip',
+                    dependencies = {
+                        {
+                            'rafamadriz/friendly-snippets',
+                            config = function() require'luasnip.loaders.from_vscode'.lazy_load() end,
+                        },
+                    },
+                },
+                'saadparwaiz1/cmp_luasnip',
                 'hrsh7th/cmp-buffer',
                 'hrsh7th/cmp-nvim-lsp',
                 'hrsh7th/cmp-path',
-                'L3MON4D3/LuaSnip',
-                'saadparwaiz1/cmp_luasnip',
             },
             config = require'somedood.configs.cmp',
         },
@@ -46,6 +52,7 @@ require'lazy'.setup {
             dependencies = {
                 'b0o/schemastore.nvim',
                 'nvim-lua/lsp_extensions.nvim',
+                { 'j-hui/fidget.nvim', opts = { } },
             },
             config = require'somedood.configs.lsp',
         },
@@ -56,7 +63,6 @@ require'lazy'.setup {
                 options = { theme = 'edge', icons_enabled = false },
             },
         },
-        { 'j-hui/fidget.nvim', opts = { } },
         {
             'nvim-telescope/telescope.nvim',
             event = 'VimEnter',
