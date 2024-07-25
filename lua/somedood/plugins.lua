@@ -44,7 +44,7 @@ require'lazy'.setup {
         {
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
-            config = require'somedood.configs.autopairs',
+            opts = { check_ts = true },
         },
         {
             'neovim/nvim-lspconfig',
