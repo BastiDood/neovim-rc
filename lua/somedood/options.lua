@@ -43,6 +43,7 @@ vim.opt.inccommand = 'split'
 
 -- User Interface Options
 vim.opt.shortmess:append { c = true }
+vim.opt.lazyredraw = true
 
 -- Convenience shortcuts for moving the focus from one window to another.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move Focus to the Left Window' })
