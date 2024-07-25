@@ -20,6 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 require'lazy'.setup {
     spec = {
         'tpope/vim-sleuth',
+        { 'tpope/vim-repeat', event = { 'BufReadPre', 'BufNewFile' } },
+        { 'tpope/vim-surround', event = 'InsertEnter' },
         { 'sainnhe/edge', config = require'somedood.configs.edge' },
         {
             'hrsh7th/nvim-cmp',
@@ -58,6 +60,35 @@ require'lazy'.setup {
         },
         {
             'nvim-lualine/lualine.nvim',
+            dependencies = {
+                { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
+                {
+                    'nvim-tree/nvim-tree.lua',
+                    keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
+                    opts = {
+                        auto_reload_on_write = false,
+                        update_cwd = true,
+                        hijack_cursor = true,
+                        filters = { dotfiles = true },
+                        renderer = {
+                            add_trailing = true,
+                            group_empty = true,
+                            indent_markers = { enable = true },
+                            icons = {
+                                show = {
+                                    file = false,
+                                    folder = false,
+                                    folder_arrow = false,
+                                    git = false,
+                                    modified = false,
+                                },
+                            },
+                        },
+                        git = { ignore = true },
+                        view = { side = 'right' },
+                    },
+                },
+            },
             opts = {
                 extensions = { 'nvim-tree', 'fugitive' },
                 options = { theme = 'edge', icons_enabled = false },
@@ -144,35 +175,6 @@ require'lazy'.setup {
             'numToStr/Comment.nvim',
             event = { 'BufReadPre', 'BufNewFile' },
             opts = { mappings = { extra = false } },
-        },
-        { 'tpope/vim-fugitive', keys = { { '<leader>Gs', [[<cmd>Git<cr>]] } } },
-        { 'tpope/vim-repeat', event = { 'BufReadPre', 'BufNewFile' } },
-        { 'tpope/vim-surround', event = 'InsertEnter' },
-        {
-            'nvim-tree/nvim-tree.lua',
-            keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
-            opts = {
-                auto_reload_on_write = false,
-                update_cwd = true,
-                hijack_cursor = true,
-                filters = { dotfiles = true },
-                renderer = {
-                    add_trailing = true,
-                    group_empty = true,
-                    indent_markers = { enable = true },
-                    icons = {
-                        show = {
-                            file = false,
-                            folder = false,
-                            folder_arrow = false,
-                            git = false,
-                            modified = false,
-                        },
-                    },
-                },
-                git = { ignore = true },
-                view = { side = 'right' },
-            }
         },
     },
     install = { colorscheme = { 'edge' } },
