@@ -94,10 +94,9 @@ require'lazy'.setup {
         {
             'nvim-treesitter/nvim-treesitter',
             build = ':TSUpdate',
-            event = { 'BufReadPre', 'BufNewFile' },
             dependencies = {
                 { 'nvim-treesitter/nvim-treesitter-context', opts = { } },
-                { 'nushell/tree-sitter-nu' },
+                'nushell/tree-sitter-nu',
             },
             keys = { { 'c[', function() require'treesitter-context'.go_to_context() end } },
             opts = {
@@ -134,7 +133,12 @@ require'lazy'.setup {
                     enable = true,
                     additional_vim_regex_highlighting = false,
                 },
-            }
+            },
+            config = function(_, opts)
+                -- Prefer Git instead of cURL in order to improve connectivity in some environments.
+                require'nvim-treesitter.install'.prefer_git = true
+                require'nvim-treesitter.configs'.setup(opts)
+            end,
         },
         {
             'numToStr/Comment.nvim',
