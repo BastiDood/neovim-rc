@@ -1,59 +1,65 @@
-local g = vim.g
-local o = vim.o
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
--- Neovide Configuration
-g.neovide_input_use_logo = false
-g.neovide_cursor_vfx_mode = 'torpedo'
-g.neovide_cursor_vfx_lifetime = 1.0
+-- Show which line the cursor is on.
+vim.opt.cursorline = true
+vim.opt.scrolloff = 5
 
--- Vim Globals
-g.mapleader = ' '
-g.netrw_liststyle = 3
+-- Gutter controls.
+vim.opt.signcolumn = 'number'
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.nu = true
+vim.opt.rnu = true
 
--- Indentation
-o.foldmethod = 'expr'
-o.foldexpr = [[nvim_treesitter#foldexpr()]]
-o.foldenable = false
-o.autoindent = true
-o.expandtab = true
-o.shiftwidth = 4
-o.tabstop = 4
-o.smarttab = true
-o.breakindent = true
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.mouse = 'a'
 
--- Performance Options
-o.lazyredraw = true
+-- Don't show the mode because it's already in the status line.
+vim.opt.showmode = false
 
--- Text Rendering Options
-o.termguicolors = true
-o.encoding = 'UTF-8'
-o.wrap = true
-o.linebreak = true
-o.scrolloff = 5
-o.hlsearch = false
+-- Indentation controls.
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = [[nvim_treesitter#foldexpr()]]
+vim.opt.foldenable = false
+
+-- Case-insensitive searching unless \C or one or more capital letters in the search term.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Set highlight on search.
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', function() vim.cmd 'nohlsearch' end)
+
+-- New splits should open in this manner.
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
 
 -- User Interface Options
 vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'noselect', 'preview' }
-o.mouse = 'n'
-o.showmode = false
-o.ruler = true
-o.tabpagemax = 5
-o.cursorline = true
-o.signcolumn = 'number'
-o.number = true
-o.relativenumber = true
-o.nu = true
-o.rnu = true
-o.splitbelow = true
-o.splitright = true
+vim.opt.shortmess:append { c = true }
 
--- Miscellaneous
-vim.opt.shortmess:append({ c = true })
-o.ignorecase = true
-o.smartcase = true
-o.hidden = true
-o.history = 500
-o.backup = false
-o.writebackup = false
-o.grepformat = '%f:%l:%c:%m'
-o.grepprg = 'rg --vimgrep'
+-- Convenience shortcuts for moving the focus from one window to another.
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move Focus to the Left Window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move Focus to the Right Window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move Focus to the Lower Window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move Focus to the Upper Window' })
+
+-- Storage Consumption Controls
+vim.opt.history = 1024
+vim.opt.backup = false
+vim.opt.writebackup = false
+
+-- Neovide Configuration
+vim.g.neovide_input_use_logo = false
+vim.g.neovide_cursor_vfx_mode = 'torpedo'
+vim.g.neovide_cursor_vfx_lifetime = 1.0
+
+-- Vim Globals
+vim.g.netrw_liststyle = 3
