@@ -32,7 +32,6 @@ vim.opt.smartcase = true
 
 -- Set highlight on search.
 vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', function() vim.cmd 'nohlsearch' end)
 
 -- New splits should open in this manner.
 vim.opt.splitbelow = true
@@ -44,12 +43,6 @@ vim.opt.inccommand = 'split'
 -- User Interface Options
 vim.opt.shortmess:append { c = true }
 vim.opt.lazyredraw = true
-
--- Convenience shortcuts for moving the focus from one window to another.
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move Focus to the Left Window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move Focus to the Right Window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move Focus to the Lower Window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move Focus to the Upper Window' })
 
 -- Storage Consumption Controls
 vim.opt.history = 1024

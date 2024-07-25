@@ -39,11 +39,20 @@ if vim.g.gonvim_running then
     end, noremap)
 end
 
--- Lazy.nvim
+-- Open main menu for `lazy.nvim`.
 vim.keymap.set('n', '<leader>l', function() require'lazy'.home() end, noremap)
 
--- Neovim
+-- Disable search highlights on escape.
+vim.keymap.set('n', '<Esc>', function() vim.cmd 'nohlsearch' end, noremap)
+
+-- Convenient shortcuts for dealing with lines of text.
 vim.keymap.set('n', '<C-s>', [[<cmd>up<cr>]], noremap)
 vim.keymap.set('n', '<C-S-k>', [[<cmd>m .-2<cr>==]], noremap)
 vim.keymap.set('n', '<C-S-j>', [[<cmd>m .+1<cr>==]], noremap)
 vim.keymap.set('x', '<leader>p', '"_dP', noremap)
+
+-- Convenience shortcuts for moving the focus from one window to another.
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move Focus to the Left Window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move Focus to the Right Window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move Focus to the Lower Window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move Focus to the Upper Window' })
