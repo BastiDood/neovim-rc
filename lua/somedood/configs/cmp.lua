@@ -3,7 +3,7 @@ return function()
     local cmp = require'cmp'
     cmp.setup {
         view = { entries = 'native' },
-        completion = { completeopt = 'menu,menuone,noselect,noinsert,preview' },
+        completion = { completeopt = 'menu,menuone,noinsert' },
         snippet = { expand = function(args) snip.lsp_expand(args.body) end },
         sources = cmp.config.sources {
             { name = 'nvim_lsp', max_item_count = 15 },

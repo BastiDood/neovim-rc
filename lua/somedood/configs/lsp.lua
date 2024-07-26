@@ -1,86 +1,69 @@
-function on_lsp_attach(client, bufnr)
-    local function buf_set_keymap(mode, combo, macro)
-        vim.keymap.set(mode, combo, macro, { buffer = bufnr, noremap = true, silent = true })
-    end
-    local function diag_open_float(scope)
-        return vim.diagnostic.open_float({ scope = scope })
-    end
-
-    -- Enable Omnifunc Integration
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Regular Keybindings
-    buf_set_keymap('n', 'K', vim.lsp.buf.hover)
-    buf_set_keymap('n', '<F2>', vim.lsp.buf.rename)
-    buf_set_keymap('n', 'gD', vim.lsp.buf.declaration)
-    buf_set_keymap('n', '<C-k>', vim.lsp.buf.signature_help)
-    buf_set_keymap('n', '<Space>fmt', function() vim.lsp.buf.format { async = true } end)
-    buf_set_keymap('n', '<Space>pd', function() diag_open_float('cursor') end)
-    buf_set_keymap('n', '<Space>ld', function() diag_open_float('line') end)
-    buf_set_keymap('n', 'g[', vim.diagnostic.goto_prev)
-    buf_set_keymap('n', 'g]', vim.diagnostic.goto_next)
-    buf_set_keymap('n', '<Space>ca', vim.lsp.buf.code_action)
-
-    -- Telescope Integration
-    local t = require'telescope.builtin'
-    buf_set_keymap('n', '<Space>wd', t.diagnostics)
-    buf_set_keymap('n', '<Space>dd', function() t.diagnostics({ bufnr = 0 }) end)
-    buf_set_keymap('n', 'gd', t.lsp_definitions)
-    buf_set_keymap('n', 'gi', t.lsp_implementations)
-    buf_set_keymap('n', 'gt', t.lsp_type_definitions)
-    buf_set_keymap('n', 'gr', t.lsp_references)
-    buf_set_keymap('n', '<Space>ws', t.lsp_workspace_symbols)
-    buf_set_keymap('n', '<Space>ds', t.lsp_document_symbols)
-end
-
-function on_inlay_hint()
-    require'lsp_extensions'.inlay_hints {
-        highlight = 'Comment',
-        prefix = ' ▶ ',
-        aligned = false,
-        only_current_line = false,
-        enabled = { 'ChainingHint' }
-    }
-end
-
 return function()
-    local lsp = require'lspconfig'
-    local caps = require'cmp_nvim_lsp'.default_capabilities()
+    vim.api.nvim_create_autocmd('LspAttach', {
+        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+        callback = function(event)
+            -- Enable Omnifunc completion for the buffer.
+            vim.api.nvim_buf_set_option(event.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    vim.diagnostic.config { severity_sort = true }
+            -- Map buffer-level bindings in normal mode.
+            local map = function(keys, func, desc)
+                vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            end
 
-    -- Simple Configurations
-    lsp.cmake.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.emmet_ls.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.gopls.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.html.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.nushell.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.svelte.setup { on_attach = on_lsp_attach, capabilities = caps }
-    lsp.svls.setup { on_attach = on_lsp_attach, capabilities = caps, single_file_support = true }
+            -- Telescope Integration
+            map('gd', require'telescope.builtin'.lsp_definitions, 'Go to Definition')
+            map('gr', require'telescope.builtin'.lsp_references, 'Go to References')
+            map('gI', require'telescope.builtin'.lsp_implementations, 'Go to Implementation')
+            map('<leader>td', require'telescope.builtin'.lsp_type_definitions, 'Type Definition')
+            map('<leader>ds', require'telescope.builtin'.lsp_document_symbols, 'Document Symbols')
+            map('<leader>ws', require'telescope.builtin'.lsp_workspace_symbols, 'Workspace Symbols')
 
-    -- Advanced Clangd Configuration
-    lsp.clangd.setup {
-        cmd = {
-            'clangd',
-            '--clang-tidy',
-            '--background-index',
-            '--all-scopes-completion',
-            '--completion-style=detailed',
-            '--header-insertion=iwyu',
-            '--enable-config',
-        },
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        init_options = {
-            clangdFileStatus = true,
-            usePlaceholders = true,
-            completeUnimported = true,
-            semanticHighlighting = true,
-        },
-    } 
+            -- Native LSP Integration
+            map('gD', vim.lsp.buf.declaration, 'Go to Declaration')
+            map('<F2>', vim.lsp.buf.rename, 'Rename')
+            map('K', vim.lsp.buf.hover, 'Show Documentation')
+            map('<C-k>', vim.lsp.buf.signature_help, 'Show Signature Help')
+            map('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+            map('<leader>fmt', function() vim.lsp.buf.format { async = true } end, 'Format Code')
 
-    -- Advanced CSS Configuration
-    local css_config = {
+            -- Native Diagnostics Integration
+            map('g[', vim.diagnostic.goto_prev, 'Go to Previous Diagnostic')
+            map('g]', vim.diagnostic.goto_next, 'Go to Next Diagnostic')
+            map('<leader>pd', function() vim.diagnostic.open_float { scope = 'cursor' } end, 'Show Diagnostics at Position')
+            map('<leader>ld', function() vim.diagnostic.open_float { scope = 'line' } end, 'Show Diagnostics at Line')
+
+            local client = vim.lsp.get_client_by_id(event.data.client_id)
+            if client then
+                if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+                    -- Highlight References under Cursor
+                    local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+                    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                        buffer = event.buf,
+                        group = highlight_augroup,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+                    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                        buffer = event.buf,
+                        group = highlight_augroup,
+                        callback = vim.lsp.buf.clear_references,
+                    })
+                    vim.api.nvim_create_autocmd('LspDetach', {
+                        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+                        callback = function(event2)
+                            vim.lsp.buf.clear_references()
+                            vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+                        end,
+                    })
+                end
+                if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+                    -- Inlay Hints
+                    map('<leader>ih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, 'Toggle Inlay Hints')
+                end
+            end
+        end,
+    })
+
+    local css = {
         validate = true,
         lint = {
             boxModel = 'warning',
@@ -93,111 +76,97 @@ return function()
             zeroUnits = 'error',
         },
     }
-    lsp.cssls.setup {
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        settings = {
-            css = css_config,
-            less = css_config,
-            scss = css_config,
-        },
-    } 
 
-    -- Advanced Deno Configuration
-    lsp.denols.setup {
-        autostart = false,
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        root_dir = lsp.util.root_pattern('deno.json'),
-        settings = {
-            deno = {
-                enable = true,
-                lint = true,
-                unstable = true,
+    local servers = {
+        cmake = { },
+        cssls = {
+            settings = {
+                css = css,
+                less = css,
+                scss = css,
             },
         },
-    }
-
-    -- Advanced JSON Configuration
-    lsp.jsonls.setup {
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        settings = {
-            json = {
-                schemas = require'schemastore'.json.schemas {
-                    select = {
-                        'package.json',
-                        'jsconfig.json',
-                        'tsconfig.json',
-                        'CMake Presets',
-                    },
-                }
-            },
-        },
-    }
-
-    -- Advanced Pyright Configuration
-    lsp.pyright.setup {
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        settings = {
-            python = {
-                analysis = {
-                    autoImportCompletions = true,
-                    autoSearchPaths = true,
-                    diagnosticMode = 'workspace',
-                    typeCheckingMode = 'strict',
-                    useLibraryCodeForTypes = true,
-                }
-            }
-        }
-    }
-
-    -- Advanced Rust Analyzer Configuration
-    lsp.rust_analyzer.setup {
-        on_attach = function(client, bufnr)
-            vim.api.nvim_create_autocmd({ 'InsertLeave', 'BufEnter', 'BufWinEnter', 'TabEnter', 'BufWritePost' }, {
-                pattern = '*.rs',
-                callback = on_inlay_hint,
-            })
-            on_lsp_attach(client, bufnr)
-        end,
-        capabilities = caps,
-        settings = {
-            ['rust-analyzer'] = {
-                cargo = { autoreload = true },
-                imports = { prefer = { no = { std = true } } },
-            },
-        },
-    }
-
-    -- Advanced TexLab Configuration
-    lsp.texlab.setup {
-        on_attach = on_lsp_attach,
-        capabilities = capabilities,
-        filetypes = { 'tex', 'bib', 'plaintex' },
-        settings = {
-            texlab = {
-                build = {
-                    executable = 'tectonic',
-                    args = { '-X', 'build' },
+        deno = {
+            autostart = false,
+            root_dir = require'lspconfig'.util.root_pattern('deno.json'),
+            settings = {
+                deno = {
+                    enable = true,
+                    lint = true,
+                    unstable = true,
                 },
             },
         },
+        emmet_ls = { },
+        gopls = { },
+        html = { },
+        jsonls = {
+            settings = {
+                json = {
+                    validate = { enable = true },
+                    schemas = require'schemastore'.json.schemas(),
+                },
+            },
+        },
+        clangd = {
+            cmd = {
+                'clangd',
+                '--clang-tidy',
+                '--background-index',
+                '--all-scopes-completion',
+                '--completion-style=detailed',
+                '--header-insertion=iwyu',
+                '--enable-config',
+            },
+            init_options = {
+                clangdFileStatus = true,
+                usePlaceholders = true,
+                completeUnimported = true,
+                semanticHighlighting = true,
+            },
+        },
+        pyright = {
+            settings = {
+                python = {
+                    analysis = {
+                        autoImportCompletions = true,
+                        autoSearchPaths = true,
+                        diagnosticMode = 'workspace',
+                        typeCheckingMode = 'strict',
+                        useLibraryCodeForTypes = true,
+                    },
+                },
+            },
+        },
+        rust_analyzer = {
+            settings = {
+                ['rust-analyzer'] = {
+                    cargo = { autoreload = true },
+                    imports = { prefer = { no = { std = true } } },
+                },
+            },
+        },
+        svelte = { },
+        tsserver = {
+            autostart = false,
+            root_dir = require'lspconfig'.util.root_pattern('package.json'),
+        },
+        zls = { autostart = true },
     }
 
-    -- Advanced TypeScript Server Configuration
-    lsp.tsserver.setup {
-        autostart = false,
-        on_attach = on_lsp_attach,
-        capabilities = caps,
-        root_dir = lsp.util.root_pattern('package.json'),
+    require'mason-tool-installer'.setup {
+        ensure_installed = vim.tbl_keys(servers or { }),
+        integrations = { ['mason-lspconfig'] = true },
     }
 
-    -- Advanced Zig Language Server Configuration
-    lsp.zls.setup {
-        autostart = true,
-        on_attach = on_lsp_attach,
-        capabilities = caps,
+    local caps = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require'cmp_nvim_lsp'.default_capabilities())
+    require'mason-lspconfig'.setup {
+        handlers = {
+            function(server_name)
+                local server = servers[server_name] or { }
+                server.capabilities = vim.tbl_deep_extend('force', {}, caps, server.capabilities or { })
+                require'lspconfig'[server_name].setup(server)
+            end,
+        },
     }
 end

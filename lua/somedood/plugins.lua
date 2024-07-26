@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 require'lazy'.setup {
     spec = {
         'tpope/vim-sleuth',
-        { 'tpope/vim-repeat', event = { 'BufReadPre', 'BufNewFile' } },
+        'tpope/vim-repeat',
         { 'tpope/vim-surround', event = 'InsertEnter' },
         { 'sainnhe/edge', config = require'somedood.configs.edge' },
         {
@@ -50,10 +50,12 @@ require'lazy'.setup {
         },
         {
             'neovim/nvim-lspconfig',
-            event = { 'BufReadPre', 'BufNewFile' },
             dependencies = {
+                { 'williamboman/mason.nvim', opts = { } },
+                'williamboman/mason-lspconfig.nvim',
+                'WhoIsSethDaniel/mason-tool-installer.nvim',
+                'hrsh7th/cmp-nvim-lsp',
                 'b0o/schemastore.nvim',
-                'nvim-lua/lsp_extensions.nvim',
                 { 'j-hui/fidget.nvim', opts = { } },
             },
             config = require'somedood.configs.lsp',
@@ -96,7 +98,6 @@ require'lazy'.setup {
         },
         {
             'nvim-telescope/telescope.nvim',
-            event = 'VimEnter',
             dependencies = {
                 'nvim-lua/popup.nvim',
                 'nvim-lua/plenary.nvim',
