@@ -19,7 +19,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Define plugins.
 require'lazy'.setup {
     spec = {
-        { 'sainnhe/edge', config = require'somedood.configs.edge' },
+        {
+            'sainnhe/edge',
+            lazy = false,
+            priority = 1000,
+            config = require'somedood.configs.edge'
+        },
         {
             'echasnovski/mini.statusline',
             version = false,
