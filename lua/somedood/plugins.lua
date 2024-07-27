@@ -33,8 +33,8 @@ require'lazy'.setup {
                 set_vim_settings = false,
             },
         },
-        'tpope/vim-sleuth',
-        'tpope/vim-repeat',
+        { 'tpope/vim-sleuth', event = { 'BufReadPost', 'BufNewFile' } },
+        { 'tpope/vim-repeat', event = 'InsertEnter' },
         { 'tpope/vim-surround', event = 'InsertEnter' },
         { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
         {
@@ -136,6 +136,8 @@ require'lazy'.setup {
                 { 'nvim-treesitter/nvim-treesitter-context', opts = { } },
                 'nushell/tree-sitter-nu',
             },
+            cmd = { 'TSUpdate', 'TSInstall', 'TSUninstall' },
+            event = { 'BufReadPost', 'BufNewFile' },
             keys = { { 'c[', function() require'treesitter-context'.go_to_context() end } },
             opts = {
                 ensure_installed = {
