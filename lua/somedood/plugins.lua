@@ -67,7 +67,11 @@ require'lazy'.setup {
             event = { 'BufReadPost', 'BufNewFile' },
             cmd = { 'LspInfo', 'LspInstall', 'LspUninstall' },
             dependencies = {
-                { 'williamboman/mason.nvim', opts = { } },
+                {
+                    'williamboman/mason.nvim',
+                    opts = { },
+                    keys = { { '<leader>m', function() vim.cmd 'Mason' end } },
+                },
                 'williamboman/mason-lspconfig.nvim',
                 'WhoIsSethDaniel/mason-tool-installer.nvim',
                 'hrsh7th/cmp-nvim-lsp',

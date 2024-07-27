@@ -41,7 +41,6 @@ end
 
 -- Open main menu for plugin managers.
 vim.keymap.set('n', '<leader>l', function() require'lazy'.home() end, noremap)
-vim.keymap.set('n', '<leader>m', function() vim.cmd 'Mason' end, noremap)
 
 -- Disable search highlights on escape.
 vim.keymap.set('n', '<Esc>', function() vim.cmd 'nohlsearch' end, noremap)
