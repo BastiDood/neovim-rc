@@ -56,3 +56,6 @@ vim.g.neovide_cursor_vfx_lifetime = 1.0
 
 -- Vim Globals
 vim.g.netrw_liststyle = 3
+
+-- Enabled fenced languages for Markdown.
+vim.g.markdown_fenced_languages = { 'ts=typescript' }
