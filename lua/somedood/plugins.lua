@@ -34,7 +34,7 @@ require'lazy'.setup {
             },
         },
         { 'echasnovski/mini.ai', version = false, event = 'InsertEnter', opts = { } },
-        { 'echasnovski/mini.surround', version = false, event = 'InsertEnter', opts = { } },
+        { 'kylechui/nvim-surround', version = '*', event = 'InsertEnter', opts = { } },
         { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = { } },
         { 'tpope/vim-sleuth', event = { 'BufReadPost', 'BufNewFile' } },
         { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
