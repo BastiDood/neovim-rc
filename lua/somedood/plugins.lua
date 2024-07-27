@@ -203,6 +203,7 @@ require'lazy'.setup {
     performance = {
 	rtp = {
 	    disabled_plugins = {
+                'editorconfig',
 		'gzip',
 		'tarPlugin',
 		'zipPlugin',
@@ -211,6 +212,7 @@ require'lazy'.setup {
 		'netrwPlugin',
 		'shada',
 		'spellfile',
+                'rplugin',
 	    },
 	},
     },
