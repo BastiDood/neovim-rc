@@ -50,6 +50,8 @@ require'lazy'.setup {
         },
         {
             'neovim/nvim-lspconfig',
+            event = { 'BufReadPost', 'BufNewFile' },
+            cmd = { 'LspInfo', 'LspInstall', 'LspUninstall' },
             dependencies = {
                 { 'williamboman/mason.nvim', opts = { } },
                 'williamboman/mason-lspconfig.nvim',
@@ -174,7 +176,7 @@ require'lazy'.setup {
         },
         {
             'numToStr/Comment.nvim',
-            event = { 'BufReadPre', 'BufNewFile' },
+            event = { 'BufReadPost', 'BufNewFile' },
             opts = { mappings = { extra = false } },
         },
     },
