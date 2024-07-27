@@ -5,7 +5,7 @@ local default = 10
 local size = default
 
 local function update_font()
-    vim.opt.guifont = { 'JetBrains Mono:h' .. size, 'JetBrainsMono NF:h' .. size }
+    vim.opt.guifont = { 'JetBrains_Mono:h' .. size, 'Segoe_UI_Emoji:h' .. size }
 end
 
 local function update_with_print()
