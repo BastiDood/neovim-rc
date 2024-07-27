@@ -98,7 +98,21 @@ return function()
             },
         },
         emmet_ls = { },
-        gopls = { },
+        gopls = {
+            settings = {
+                gopls = {
+                    hints = {
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        constantValues = true,
+                        functionTypeParameters = true,
+                        parameterNames = true,
+                        rangeVariableTypes = true,
+                    },
+                },
+            },
+        },
         html = { },
         jsonls = {
             settings = {
@@ -150,6 +164,7 @@ return function()
         tsserver = {
             autostart = false,
             root_dir = require'lspconfig'.util.root_pattern('package.json'),
+            server_capabilities = { documentFormattingProvider = false },
         },
         zls = { autostart = true },
     }
