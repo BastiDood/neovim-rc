@@ -13,6 +13,9 @@ vim.opt.relativenumber = true
 vim.opt.nu = true
 vim.opt.rnu = true
 
+-- Status line configuration
+vim.opt.laststatus = 3
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 

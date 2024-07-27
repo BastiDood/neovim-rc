@@ -19,10 +19,19 @@ vim.opt.rtp:prepend(lazypath)
 -- Define plugins.
 require'lazy'.setup {
     spec = {
+        { 'sainnhe/edge', config = require'somedood.configs.edge' },
+        {
+            'echasnovski/mini.statusline',
+            version = false,
+            opts = {
+                use_icons = false,
+                set_vim_settings = false,
+            },
+        },
         'tpope/vim-sleuth',
         'tpope/vim-repeat',
         { 'tpope/vim-surround', event = 'InsertEnter' },
-        { 'sainnhe/edge', config = require'somedood.configs.edge' },
+        { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
         {
             'hrsh7th/nvim-cmp',
             event = 'InsertEnter',
@@ -63,39 +72,29 @@ require'lazy'.setup {
             config = require'somedood.configs.lsp',
         },
         {
-            'nvim-lualine/lualine.nvim',
-            dependencies = {
-                { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
-                {
-                    'nvim-tree/nvim-tree.lua',
-                    keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
-                    opts = {
-                        auto_reload_on_write = false,
-                        update_cwd = true,
-                        hijack_cursor = true,
-                        filters = { dotfiles = true },
-                        renderer = {
-                            add_trailing = true,
-                            group_empty = true,
-                            indent_markers = { enable = true },
-                            icons = {
-                                show = {
-                                    file = false,
-                                    folder = false,
-                                    folder_arrow = false,
-                                    git = false,
-                                    modified = false,
-                                },
-                            },
+            'nvim-tree/nvim-tree.lua',
+            keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
+            opts = {
+                auto_reload_on_write = false,
+                update_cwd = true,
+                hijack_cursor = true,
+                filters = { dotfiles = true },
+                renderer = {
+                    add_trailing = true,
+                    group_empty = true,
+                    indent_markers = { enable = true },
+                    icons = {
+                        show = {
+                            file = false,
+                            folder = false,
+                            folder_arrow = false,
+                            git = false,
+                            modified = false,
                         },
-                        git = { ignore = true },
-                        view = { side = 'right' },
                     },
                 },
-            },
-            opts = {
-                extensions = { 'nvim-tree', 'fugitive' },
-                options = { theme = 'edge', icons_enabled = false },
+                git = { ignore = true },
+                view = { side = 'right' },
             },
         },
         {
