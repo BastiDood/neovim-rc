@@ -33,9 +33,9 @@ require'lazy'.setup {
                 set_vim_settings = false,
             },
         },
+        { 'echasnovski/mini.ai', version = false, event = 'InsertEnter', opts = { } },
+        { 'echasnovski/mini.surround', version = false, event = 'InsertEnter', opts = { } },
         { 'tpope/vim-sleuth', event = { 'BufReadPost', 'BufNewFile' } },
-        { 'tpope/vim-repeat', event = 'InsertEnter' },
-        { 'tpope/vim-surround', event = 'InsertEnter' },
         { 'tpope/vim-fugitive', keys = { { '<leader>Gs', function() vim.cmd 'Git' end } } },
         {
             'hrsh7th/nvim-cmp',
