@@ -151,6 +151,7 @@ return function()
                 },
             },
         },
+        marksman = { },
         rust_analyzer = {
             settings = {
                 ['rust-analyzer'] = {
@@ -160,6 +161,7 @@ return function()
             },
         },
         svelte = { },
+        tailwindcss = { },
         tsserver = {
             autostart = false,
             root_dir = require'lspconfig'.util.root_pattern('package.json'),
