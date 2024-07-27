@@ -3,7 +3,7 @@ return function()
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
             -- Enable Omnifunc completion for the buffer.
-            vim.api.nvim_buf_set_option(event.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+            vim.opt_local.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
             -- Map buffer-level bindings in normal mode.
             local map = function(keys, func, desc)
