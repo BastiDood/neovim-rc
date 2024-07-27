@@ -78,6 +78,36 @@ return function()
     }
 
     local servers = {
+        basedpyright = {
+            settings = {
+                python = {
+                    analysis = {
+                        autoImportCompletions = true,
+                        autoSearchPaths = true,
+                        diagnosticMode = 'workspace',
+                        typeCheckingMode = 'strict',
+                        useLibraryCodeForTypes = true,
+                    },
+                },
+            },
+        },
+        clangd = {
+            cmd = {
+                'clangd',
+                '--clang-tidy',
+                '--background-index',
+                '--all-scopes-completion',
+                '--completion-style=detailed',
+                '--header-insertion=iwyu',
+                '--enable-config',
+            },
+            init_options = {
+                clangdFileStatus = true,
+                usePlaceholders = true,
+                completeUnimported = true,
+                semanticHighlighting = true,
+            },
+        },
         cmake = { },
         cssls = {
             settings = {
@@ -119,36 +149,6 @@ return function()
                 json = {
                     validate = { enable = true },
                     schemas = require'schemastore'.json.schemas(),
-                },
-            },
-        },
-        clangd = {
-            cmd = {
-                'clangd',
-                '--clang-tidy',
-                '--background-index',
-                '--all-scopes-completion',
-                '--completion-style=detailed',
-                '--header-insertion=iwyu',
-                '--enable-config',
-            },
-            init_options = {
-                clangdFileStatus = true,
-                usePlaceholders = true,
-                completeUnimported = true,
-                semanticHighlighting = true,
-            },
-        },
-        pyright = {
-            settings = {
-                python = {
-                    analysis = {
-                        autoImportCompletions = true,
-                        autoSearchPaths = true,
-                        diagnosticMode = 'workspace',
-                        typeCheckingMode = 'strict',
-                        useLibraryCodeForTypes = true,
-                    },
                 },
             },
         },
