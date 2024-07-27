@@ -180,11 +180,6 @@ require'lazy'.setup {
                 require'nvim-treesitter.configs'.setup(opts)
             end,
         },
-        {
-            'numToStr/Comment.nvim',
-            event = { 'BufReadPost', 'BufNewFile' },
-            opts = { mappings = { extra = false } },
-        },
     },
     install = { colorscheme = { 'edge' } },
     change_detection = { enabled = false },
