@@ -56,6 +56,9 @@ vim.opt.writebackup = false
 vim.g.neovide_input_use_logo = false
 vim.g.neovide_cursor_vfx_mode = 'torpedo'
 vim.g.neovide_cursor_vfx_lifetime = 1.0
+vim.g.neovide_floating_shadow = false
+vim.g.neovide_floating_blur_amount_x = 0.0
+vim.g.neovide_floating_blur_amount_y = 0.0
 
 -- Vim Globals
 vim.g.netrw_liststyle = 3
