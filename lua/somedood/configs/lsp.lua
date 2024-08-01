@@ -172,7 +172,6 @@ return function()
         svelte = { },
         tailwindcss = { },
         tsserver = {
-            autostart = false,
             root_dir = require'lspconfig'.util.root_pattern('package.json'),
             server_capabilities = { documentFormattingProvider = false },
         },
