@@ -120,7 +120,7 @@ return function()
             root_dir = require'lspconfig'.util.root_pattern('deno.json'),
             settings = {
                 deno = {
-                    enable = true,
+                    enable = false,
                     lint = true,
                     unstable = true,
                 },
