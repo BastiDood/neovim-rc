@@ -115,7 +115,7 @@ return function()
                 scss = css,
             },
         },
-        deno = {
+        denols = {
             autostart = false,
             root_dir = require'lspconfig'.util.root_pattern('deno.json'),
             settings = {
