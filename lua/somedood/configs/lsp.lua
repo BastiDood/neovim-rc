@@ -155,6 +155,7 @@ return function()
                             'Deno Config (deno.json)',
                             'package.json',
                             'prettierrc.json',
+                            'tsup',
                             'Stylelint (.stylelintrc)',
                         },
                     },
