@@ -17,6 +17,7 @@ return function()
             map('<leader>td', require'telescope.builtin'.lsp_type_definitions, 'Type Definition')
             map('<leader>ds', require'telescope.builtin'.lsp_document_symbols, 'Document Symbols')
             map('<leader>ws', require'telescope.builtin'.lsp_workspace_symbols, 'Workspace Symbols')
+            map('<leader>wd', require'telescope.builtin'.diagnostics, 'Workspace Diagnostics')
 
             -- Native LSP Integration
             map('gD', vim.lsp.buf.declaration, 'Go to Declaration')
