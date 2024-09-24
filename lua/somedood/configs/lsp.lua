@@ -142,6 +142,7 @@ return function()
                         select = {
                             '.eslintrc',
                             '.htmlhintrc',
+                            'CMake Presets',
                             'Deno Config (deno.json)',
                             'package.json',
                             'prettierrc.json',
