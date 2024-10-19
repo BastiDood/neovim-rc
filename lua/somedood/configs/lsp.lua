@@ -113,7 +113,7 @@ return function()
             },
         },
         denols = {
-            autostart = true,
+            autostart = false,
             root_dir = require'lspconfig'.util.root_pattern('deno.json'),
             settings = { deno = { lint = true, unstable = true } },
         },
