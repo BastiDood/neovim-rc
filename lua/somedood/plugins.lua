@@ -20,6 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 require'lazy'.setup {
     defaults = { lazy = true },
     spec = {
+        { 'echasnovski/mini.icons', version = false, opts = { style = 'ascii' } },
         {
             'sainnhe/edge',
             lazy = false,
@@ -87,6 +88,7 @@ require'lazy'.setup {
             'echasnovski/mini.files',
             version = false,
 	    keys = { { '<leader>n', function() require'mini.files'.open() end } },
+            dependencies = { 'echasnovski/mini.icons' },
             opts = { },
         },
         {
