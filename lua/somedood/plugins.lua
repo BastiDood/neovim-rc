@@ -84,30 +84,10 @@ require'lazy'.setup {
             config = require'somedood.configs.lsp',
         },
         {
-            'nvim-tree/nvim-tree.lua',
-            keys = { { '<leader>n', function() require'nvim-tree.api'.tree.toggle() end } },
-            opts = {
-                auto_reload_on_write = false,
-                update_cwd = true,
-                hijack_cursor = true,
-                filters = { dotfiles = true },
-                renderer = {
-                    add_trailing = true,
-                    group_empty = true,
-                    indent_markers = { enable = true },
-                    icons = {
-                        show = {
-                            file = false,
-                            folder = false,
-                            folder_arrow = false,
-                            git = false,
-                            modified = false,
-                        },
-                    },
-                },
-                git = { ignore = true },
-                view = { side = 'right' },
-            },
+            'echasnovski/mini.files',
+            version = '*',
+	    keys = { { '<leader>n', function() require'mini.files'.open() end } },
+            opts = { },
         },
         {
             'nvim-telescope/telescope-fzf-native.nvim',
