@@ -85,7 +85,7 @@ require'lazy'.setup {
         },
         {
             'echasnovski/mini.files',
-            version = '*',
+            version = false,
 	    keys = { { '<leader>n', function() require'mini.files'.open() end } },
             opts = { },
         },
