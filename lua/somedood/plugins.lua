@@ -85,6 +85,11 @@ require'lazy'.setup {
             config = require'somedood.configs.lsp',
         },
         {
+            'pmizio/typescript-tools.nvim',
+            dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+            opts = { },
+        },
+        {
             'echasnovski/mini.files',
             version = false,
 	    keys = { { '<leader>n', function() require'mini.files'.open() end } },

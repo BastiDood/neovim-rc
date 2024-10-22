@@ -174,10 +174,6 @@ return function()
             end,
         },
         tailwindcss = { },
-        ts_ls = {
-            root_dir = require'lspconfig'.util.root_pattern('package.json'),
-            server_capabilities = { documentFormattingProvider = false },
-        },
         wgsl_analyzer = { },
         zls = { autostart = true },
     }
