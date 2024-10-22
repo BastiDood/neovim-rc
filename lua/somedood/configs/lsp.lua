@@ -162,7 +162,17 @@ return function()
                 },
             },
         },
-        svelte = { },
+        svelte = {
+            on_attach = function(client, bufnr)
+                -- https://github.com/neovim/nvim-lspconfig/issues/725#issuecomment-1837509673
+                vim.api.nvim_create_autocmd('BufWritePost', {
+                    pattern = { '*.js', '*.ts' },
+                    callback = function(ctx)
+                        client.notify('$/onDidChangeTsOrJsFile', { uri = ctx.match })
+                    end,
+                })
+            end,
+        },
         tailwindcss = { },
         ts_ls = {
             root_dir = require'lspconfig'.util.root_pattern('package.json'),
