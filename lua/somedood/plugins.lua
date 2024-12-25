@@ -129,7 +129,7 @@ require'lazy'.setup {
         {
             'nvim-treesitter/nvim-treesitter',
             build = ':TSUpdate',
-            dependencies = { 'nvim-treesitter/nvim-treesitter-context', 'nushell/tree-sitter-nu' },
+            dependencies = { 'nvim-treesitter/nvim-treesitter-context' },
             cmd = { 'TSUpdate', 'TSInstall', 'TSUninstall' },
             event = { 'BufReadPost', 'BufNewFile' },
             keys = { { 'c[', function() require'treesitter-context'.go_to_context() end } },
