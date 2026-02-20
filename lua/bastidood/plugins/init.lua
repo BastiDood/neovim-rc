@@ -51,19 +51,22 @@ require'lazy'.setup {
 		{
 			'nvim-mini/mini.ai',
 			version = false,
-			event = 'InsertEnter',
+			event = 'VeryLazy',
 			opts = { },
 		},
 		{
 			'nvim-mini/mini.files',
 			version = false,
 			dependencies = { 'nvim-mini/mini.icons' },
-			opts = require'bastidood.plugins.configs.mini.files',
+			keys = {
+				{ '<leader>n', function() require'mini.files'.open() end, desc = 'Ope[n] mini.files' },
+			},
+			opts = { },
 		},
 		{
 			'kylechui/nvim-surround',
 			version = '*',
-			event = 'InsertEnter',
+			event = 'VeryLazy',
 			opts = { },
 		},
 		{
@@ -73,17 +76,19 @@ require'lazy'.setup {
 		},
   		{
 			'folke/todo-comments.nvim',
-			event = 'VimEnter',
+			event = { 'BufReadPost', 'BufNewFile' },
 			dependencies = { 'nvim-lua/plenary.nvim' },
 			opts = { signs = false },
 		},
 		{
 			'saghen/blink.cmp',
-			event = 'VimEnter',
+			event = { 'InsertEnter', 'CmdlineEnter' },
 			version = '1.*',
-			opts = { keymap = { preset = 'default' } },
-			sources = { default = { 'path' } },
-      		signature = { enabled = true },
+			opts = {
+				keymap = { preset = 'default' },
+				sources = { default = { 'path' } },
+				signature = { enabled = true },
+			},
 		},
 		{
 			'nvim-telescope/telescope.nvim',
@@ -91,6 +96,92 @@ require'lazy'.setup {
 				'nvim-lua/plenary.nvim',
 				'nvim-telescope/telescope-fzf-native.nvim',
 				'nvim-telescope/telescope-ui-select.nvim',
+			},
+			-- Pre-emptive init for `telescope-ui-select` hooking into `vim.ui.select`,
+			-- assuming LSPs are the main source of `vim.ui.select` via code actions.
+			event = 'LspAttach',
+			keys = {
+				{
+					'<C-f>',
+					function() require'telescope.builtin'.current_buffer_fuzzy_find() end,
+					desc = '[C-f] Fuzzy-search in current buffer',
+				},
+				{
+					'<C-S-f>',
+					function() require'telescope.builtin'.live_grep() end,
+					desc = '[C-S-f] Search by grep',
+				},
+				{
+					'<C-,>',
+					function() require'telescope.builtin'.find_files { cwd = vim.fn.stdpath'config' } end,
+					desc = '[C-,] Search in config directory',
+				},
+				{
+					'<leader>ss',
+					function() require'telescope.builtin'.builtin() end,
+					desc = '[s]earch [s]elect Telescope',
+				},
+				{
+					'<leader>sk',
+					function() require'telescope.builtin'.keymaps() end,
+					desc = '[s]earch [k]eymaps',
+				},
+				{
+					'<leader>sw',
+					function() require'telescope.builtin'.grep_string() end,
+					mode = { 'n', 'v' },
+					desc = '[s]earch current [w]ord',
+				},
+				{
+					'<leader>sd',
+					function() require'telescope.builtin'.diagnostics() end,
+					desc = '[s]earch [d]iagnostics',
+				},
+				{
+					'<leader>sr',
+					function() require'telescope.builtin'.resume() end,
+					desc = '[s]earch [r]esume',
+				},
+				{
+					'<leader>s.',
+					function() require'telescope.builtin'.oldfiles() end,
+					desc = '[s]earch recent files ("." for repeat)',
+				},
+				{
+					'<leader>sc',
+					function() require'telescope.builtin'.commands() end,
+					desc = '[s]earch [c]ommands',
+				},
+				{
+					'<leader>?',
+					function() require'telescope.builtin'.help_tags() end,
+					desc = 'Search help',
+				},
+				{
+					'<leader>ff',
+					function() require'telescope.builtin'.find_files() end,
+					desc = '[f]ind [f]iles',
+				},
+				{
+					'<leader>fb',
+					function() require'telescope.builtin'.buffers() end,
+					desc = '[f]ind [b]uffers',
+				},
+				{
+					'<leader>ft',
+					function() require'telescope.builtin'.treesitter() end,
+					desc = '[f]ind [t]reesitter',
+				},
+				{
+					'<leader>fGf',
+					function() require'telescope.builtin'.git_files() end,
+					desc = '[f]ind [G]it [f]iles',
+				},
+				{
+					'<leader>Gb',
+					function() require'telescope.builtin'.git_branches() end,
+					desc = '[f]ind [G]it [b]ranches',
+				},
 			},
 			config = require'bastidood.plugins.configs.telescope',
 		},
