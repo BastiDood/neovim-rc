@@ -40,6 +40,9 @@ vim.o.splitbelow = true
 vim.opt.linebreak = true
 vim.opt.breakindent = true
 
+-- Default to Unix (LF) line endings.
+vim.opt.fileformats = { 'unix', 'dos' }
+
 -- Case-insensitive searching unless \C or one or more capital letters in the search term.
 vim.o.ignorecase = true
 vim.o.smartcase = true
