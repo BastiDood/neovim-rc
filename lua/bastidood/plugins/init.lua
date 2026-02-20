@@ -26,7 +26,7 @@ require'lazy'.setup {
 		{
 			'sainnhe/edge',
 			priority = 1000,
-			config = require'bastidood.configs.edge'
+			config = require'bastidood.plugins.configs.edge'
 		},
 		{
 			'nvim-mini/mini.statusline',
@@ -58,7 +58,7 @@ require'lazy'.setup {
 			'nvim-mini/mini.files',
 			version = false,
 			dependencies = { 'nvim-mini/mini.icons' },
-			opts = require'bastidood.configs.mini.files',
+			opts = require'bastidood.plugins.configs.mini.files',
 		},
 		{
 			'kylechui/nvim-surround',
@@ -92,7 +92,7 @@ require'lazy'.setup {
 				'nvim-telescope/telescope-fzf-native.nvim',
 				'nvim-telescope/telescope-ui-select.nvim',
 			},
-			config = require'bastidood.configs.telescope',
+			config = require'bastidood.plugins.configs.telescope',
 		},
 		{ 'nvim-telescope/telescope-ui-select.nvim' },
 		{
@@ -102,7 +102,7 @@ require'lazy'.setup {
 		{
 			'nvim-treesitter/nvim-treesitter',
 			lazy = false,
-			config = require'bastidood.configs.treesitter',
+			config = require'bastidood.plugins.configs.treesitter',
 			build = ':TSUpdate',
 		},
 	},
