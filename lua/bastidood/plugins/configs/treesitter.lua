@@ -39,6 +39,7 @@ return function()
 	})
 
 	-- Enable experimental folds support.
+	vim.o.foldlevelstart = 10 -- arbitrarily high number to open all folds by default
 	vim.wo[0][0].foldexpr = [[v:lua.vim.treesitter.foldexpr()]]
 	vim.wo[0][0].foldmethod = 'expr'
 
